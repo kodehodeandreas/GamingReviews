@@ -1,0 +1,735 @@
+/* =======================================================
+  DARK MODE NAVBAR
+======================================================= */
+
+[data-theme="dark"] .navbar {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 1, 0.85),
+    rgba(130, 0, 135, 0.7),
+    rgb(22, 0, 26)
+  );
+  border-bottom: 2px solid rgba(255, 0, 200, 0.756);
+  box-shadow: 0 4px 25px rgba(255, 0, 255, 0);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+[data-theme="dark"] .navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #ff00c8, #00ffe5b5, #ff00c8);
+  filter: blur(3px);
+  opacity: 0.9;
+  animation: darkNavbarGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes darkNavbarGlow {
+  0% {
+    opacity: 0.3;
+    transform: scaleX(0.99);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scaleX(0.99);
+  }
+}
+
+[data-theme="dark"] .navbar-search input {
+  background-color: rgba(13, 13, 13, 0.8);
+  color: #fff;
+  border: 2px solid rgba(255, 0, 204, 0.668);
+}
+
+[data-theme="dark"] .navbar-search button {
+  background: linear-gradient(90deg, #ff007f, #ff00bf, #e701e7);
+  color: white;
+}
+
+/* =======================================================
+   LIGHT MODE NAVBAR
+======================================================= */
+
+[data-theme="light"] .navbar {
+  background: linear-gradient(
+    to bottom,
+    rgba(246, 142, 24, 0.941),
+    rgba(241, 2, 149, 0.912),
+    rgba(17, 7, 13, 0.801)
+  );
+
+  border-bottom: 2px solid rgb(254, 254, 254);
+
+  box-shadow: 0 12px 28px rgba(200, 6, 164, 0),
+    inset 0 -1px 0 rgba(255, 255, 255, 0);
+
+  backdrop-filter: blur(0px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  transition: all 0.4s ease;
+  overflow: visible;
+  position: relative;
+}
+
+/* Subtle animated glow line 
+[data-theme="light"] .navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(238, 171, 15, 0),
+    rgba(255, 233, 120, 0.8),
+    rgba(255, 162, 119, 0.8),
+    rgba(80, 120, 255, 0)
+  );
+
+  opacity: 0.7;
+  filter: blur(2px);
+  animation: lightNavbarGlow 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes lightNavbarGlow {
+  0% {
+    opacity: 0.35;
+    transform: scaleX(0.96);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
+
+  100% {
+    opacity: 0.35;
+    transform: scaleX(0.96);
+  }
+}*/
+
+/* SEARCH INPUT */
+[data-theme="light"] .navbar-search input {
+  background: rgba(255, 255, 255, 0.75);
+  color: #1e2633;
+
+  border: 1px solid rgb(245, 241, 245);
+  border-radius: 10px;
+
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 rgba(0, 0, 0, 0);
+
+  transition: all 0.25s ease;
+}
+
+[data-theme="light"] .navbar-search input:focus {
+  outline: none;
+
+  border-color: rgb(250, 105, 1);
+
+  box-shadow: 0 0 0 3px rgba(140, 171, 255, 0),
+    inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* SEARCH BUTTON */
+[data-theme="light"] .navbar-search button {
+  background: linear-gradient(135deg, #ff00aa, #e109f9);
+  color: white;
+
+  border: 2px solid rgb(248, 246, 246);
+  border-radius: 10px;
+
+  box-shadow: 0 6px 16px rgba(80, 121, 255, 0),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .navbar-search button:hover {
+  transform: translateY(-1px) scale(1.03);
+
+  box-shadow: 0 12px 30px rgba(110, 161, 255, 0),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* NAV LINKS */
+[data-theme="light"] .navbar a {
+  color: #f5f6f9;
+  font-weight: 500;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+[data-theme="light"] .navbar a:hover {
+  color: #020202;
+  text-shadow: 0 0 8px rgba(1, 2, 4, 0.35);
+}
+
+[data-theme="light"] .navbar-links li a.active {
+  color: #f9f6f6;
+}
+
+[data-theme="light"] .navbar-links li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateX(-50%) scaleX(0);
+  background: linear-gradient(90deg, #ffffff, #f8f4f7, #fefcfe);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0);
+  transition: transform 0.4s ease;
+}
+
+[data-theme="light"] .navbar-links li a:hover {
+  color: #faf7f5;
+}
+
+[data-theme="light"] .navbar-logo img {
+  height: 250px;
+  margin-top: -60px;
+  margin-bottom: -60px;
+  filter: drop-shadow(0 0 4px rgba(255, 115, 0, 0.978));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+/* =======================================================
+   BASE NAVBAR STRUCTURE
+======================================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 8, 17, 0.85);
+  backdrop-filter: blur(10px);
+  animation: navbarGlow 4s ease-in-out infinite alternate;
+  padding: 8px 0 0 0;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+@keyframes navbarGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 157, 0.963);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(255, 0, 187, 0.597);
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 0, 183, 0.571);
+  }
+  100% {
+    box-shadow: 0 0 35px rgba(255, 0, 166, 0.7);
+  }
+}
+
+/* =======================================================
+   CONTENT LAYOUT
+======================================================= */
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5px 10px;
+  gap: 20px;
+}
+
+/* =======================================================
+   LOGO
+======================================================= */
+
+.navbar-logo img {
+  height: 250px;
+  margin-top: -60px;
+  margin-bottom: -60px;
+  filter: drop-shadow(0 0 4px rgba(255, 0, 212, 0));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.navbar-logo img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 6px rgb(255, 166, 0));
+}
+
+/* =======================================================
+   LINKS
+======================================================= */
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+.navbar-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.navbar-links li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateX(-50%) scaleX(0);
+  background: linear-gradient(90deg, #fe218f, #ff00d0, #fb73fb);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0);
+  transition: transform 0.4s ease;
+}
+
+.navbar-links li a:hover {
+  color: #ff00aa;
+}
+
+.navbar-links li a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.navbar-links li a.active {
+  color: #ff00d9;
+}
+
+.navbar-links li a.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.dropdown {
+  position: relative;
+}
+
+/* === HAMBURGER KNAPP === */
+.navbar-hamburger {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+  user-select: none;
+  margin-left: 10px;
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), color 0.35s ease,
+    text-shadow 0.4s ease;
+}
+
+.navbar-hamburger:hover {
+  color: #fa01e9;
+  transform: scale(1.35);
+  text-shadow: 0 0 12px rgba(250, 1, 233, 0), 0 0 20px rgba(250, 1, 233, 0.4);
+}
+
+[data-theme="light"] .navbar-hamburger:hover {
+  color: #faf6fa;
+  transform: scale(1.35);
+  text-shadow: 0 0 12px rgba(250, 1, 233, 0), 0 0 20px rgba(250, 1, 233, 0.4);
+}
+
+/* === DROPDOWN MENY === */
+.dropdown-menu {
+  position: absolute;
+  top: calc(70% + 0px);
+  right: 20px;
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(255, 0, 0, 0);
+  border-radius: 10px;
+  padding: 10px 15px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  white-space: nowrap;
+  z-index: 999;
+
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  pointer-events: none;
+}
+
+.dropdown-menu.open {
+  animation: dropdownBreath 0.55s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  pointer-events: auto;
+}
+
+.dropdown-menu.close {
+  animation: dropdownClose 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes dropdownClose {
+  0% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.92);
+  }
+}
+
+@keyframes dropdownBreath {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.92);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0px) scale(1.03); /* slight overshoot */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1); /* settle naturally */
+  }
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+
+  font-weight: 400;
+  transition: color 0.35s ease, transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
+    text-shadow 0.35s ease;
+  display: inline-block;
+}
+
+.dropdown-menu a:hover {
+  color: var(--accent-color);
+  transform: scale(1.12);
+  text-shadow: 0 0 2px var(--accent-glow);
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.platform-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 6px;
+  vertical-align: middle;
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dropdown-menu a:hover .platform-icon {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* =======================================================
+   SEARCH
+======================================================= */
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+  max-width: 400px;
+}
+
+.navbar-search input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.navbar-search input:focus {
+  outline: #e701e7;
+  border: solid 2px rgb(246, 2, 161);
+  box-shadow: 0 0 5px rgb(255, 0, 187);
+}
+
+.navbar-search button {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  font-family: "Montserrat", sans-serif;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-search button:hover {
+  transform: scale(1.07);
+}
+
+/* =======================================================
+   THEME TOGGLE — felles base
+======================================================= */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* avstand mellom DARK | LIGHT */
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  user-select: none;
+  color: rgba(255, 255, 255, 0.677);
+}
+
+.theme-toggle-bottom {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.theme-toggle-inline {
+  position: relative;
+  margin-left: 12px;
+}
+
+/* ===========================
+   Theme options
+=========================== */
+
+.theme-option {
+  cursor: pointer;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.theme-option:hover {
+  color: rgb(255, 0, 242);
+  text-shadow: 0 0 10px rgba(6, 6, 6, 0);
+}
+
+/* Aktiv valgt mode */
+.theme-option.active {
+  color: var(--accent-color);
+  font-weight: 800;
+  text-shadow: 0 0 5px var(--accent-glow);
+}
+
+/* ===========================
+   Divider (|)
+=========================== */
+
+.divider {
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.659);
+  margin: 0 1px;
+  font-weight: 400;
+}
+
+/* Lys modus — gjør divider litt mørkere for kontrast */
+[data-theme="light"] .divider {
+  color: rgba(255, 255, 255, 0.934);
+  font-weight: 400;
+}
+
+/* =======================================================
+   ADMIN TOOLTIP
+======================================================= */
+
+.navbar-admin {
+  position: absolute;
+  display: flex;
+  right: 30px;
+  top: 45%;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.admin-icon {
+  width: 24px;
+  height: 24px;
+  color: rgb(251, 251, 251);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.admin-icon:hover {
+  opacity: 1;
+  color: #fb16cd;
+  transform: scale(1.35);
+  filter: drop-shadow(0 0 0px var(--accent-color));
+}
+
+.navbar-admin [data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+/* Tooltip dark */
+[data-theme="dark"] .navbar-admin [data-tooltip]::after {
+  background: rgba(255, 0, 179, 0);
+  color: #fff;
+  border: 1px solid rgba(255, 0, 255, 0);
+}
+
+/* Tooltip light */
+[data-theme="light"] .navbar-admin [data-tooltip]::after {
+  background: rgba(255, 255, 255, 0);
+  color: #ffffff;
+  border: 1px solid rgba(255, 100, 180, 0);
+}
+
+[data-theme="light"] .admin-icon:hover {
+  opacity: 1;
+  color: #faf8fa;
+  transform: scale(1.35);
+  filter: drop-shadow(0 0 0px var(--accent-color));
+}
+
+.navbar-admin:hover [data-tooltip]::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-3px);
+}
+
+/* =======================================================
+   RESPONSIVE LAYOUT
+======================================================= */
+
+@media (max-width: 900px) {
+  .navbar {
+    overflow-x: hidden;
+  }
+
+  .navbar-content {
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 15px;
+    text-align: center;
+  }
+
+  .navbar-logo img {
+    height: 180px;
+    margin-top: -40px;
+    margin-bottom: -40px;
+  }
+
+  .navbar-links {
+    display: flex !important;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    order: 2;
+  }
+
+  .navbar-links li a {
+    font-size: 0.65rem;
+    letter-spacing: 0;
+    padding: 2px 4px;
+  }
+
+  .navbar-admin {
+    order: 2; /* legg den i samme rekkefølge som links */
+    margin: 6px 0 0 0; /* litt space */
+    display: flex;
+    top: 50px;
+    justify-content: center; /* sentrer ikonet */
+  }
+
+  .admin-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+
+  .navbar-hamburger {
+    order: 3;
+    display: none;
+  }
+
+  .navbar-search {
+    order: 3;
+    width: 100%;
+    max-width: 90%;
+    margin-top: 8px;
+  }
+
+  .navbar-search input {
+    font-size: 0.9rem;
+  }
+
+  .navbar-search button {
+    padding: 7px 14px;
+    font-size: 0.85rem;
+  }
+
+  .theme-toggle-bottom {
+    position: relative;
+    transform: none;
+    bottom: auto;
+    left: auto;
+    margin-top: 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar-links {
+    gap: 10px;
+  }
+
+  .navbar-links li a {
+    font-size: 0.95rem;
+  }
+
+  .navbar-search input {
+    font-size: 0.8rem;
+  }
+
+  .theme-toggle-bottom {
+    font-size: 0.75rem;
+  }
+}

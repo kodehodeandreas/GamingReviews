@@ -1,0 +1,163 @@
+/* ============================================
+   PLAYSTATION PAGE — MATCHER DIN NÅVÆRENDE STIL
+=============================================== */
+
+.playstation-page {
+  max-width: 1500px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Sideheader */
+.playstation-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.playstation-header h1 {
+  font-size: 2.4rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  background: linear-gradient(90deg, #0070ff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px rgba(0, 170, 255, 0.2);
+}
+
+.playstation-header p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* Grid for PS-artikler */
+.playstation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 30px;
+}
+
+/* Kort */
+.ps-card {
+  display: flex;
+  gap: 15px;
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  position: relative;
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Dark mode */
+[data-theme="dark"] .ps-card {
+  background: rgba(10, 2, 18, 0.8);
+  border: 1px solid rgba(0, 145, 255, 0.45);
+  box-shadow: 0 0 8px rgba(0, 140, 255, 0.25);
+}
+
+[data-theme="dark"] .ps-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 14px rgba(0, 180, 255, 0.5);
+}
+
+/* Light mode */
+[data-theme="light"] .ps-card {
+  background: rgba(240, 247, 255, 0.9);
+  border: 1px solid rgba(0, 102, 255, 0.4);
+  box-shadow: 0 0 6px rgba(0, 120, 255, 0.1);
+}
+
+[data-theme="light"] .ps-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 14px rgba(0, 150, 255, 0.3);
+}
+
+/* Bilde */
+.ps-card img {
+  width: 40%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Innhold */
+.ps-card-content {
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+}
+
+.ps-card-content h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #59b0ff;
+  text-shadow: 0 0 6px rgba(0, 170, 255, 0.3);
+}
+
+.ps-card-content p {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+/* Les mer-link */
+.ps-read-more {
+  margin-top: 8px;
+  color: #00b3ff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.ps-read-more:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(0, 180, 255, 0.3);
+}
+
+/* Loading / Empty State */
+.ps-empty {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .playstation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ps-card {
+    flex-direction: column;
+  }
+
+  .ps-card img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .ps-card-content {
+    width: 100%;
+  }
+}
+
+/* Fade-in animasjon */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

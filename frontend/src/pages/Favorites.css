@@ -1,0 +1,196 @@
+.favorites {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 100px 30px 60px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
+[data-theme="dark"] .favorites {
+  background: radial-gradient(
+      circle at top right,
+      rgba(255, 0, 153, 0.427),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(0, 247, 255, 0.329),
+      transparent 50%
+    ),
+    linear-gradient(to bottom, #38012c93 0%, #150d1f 80%, #0b0811 100%);
+  background-attachment: fixed;
+  border-radius: 0px;
+  box-shadow: 0 0 50px rgba(255, 0, 255, 0.08);
+  transition: background 0.6s ease;
+}
+
+[data-theme="light"] .favorites {
+  background: radial-gradient(
+      circle at top right,
+      rgba(255, 0, 123, 0.463),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(255, 0, 132, 0.496),
+      transparent 50%
+    ),
+    linear-gradient(to bottom, #a1e9ff 0%, #6fcfff 80%, #b8f3ff 100%);
+  background-attachment: fixed;
+  border-radius: 0px;
+  box-shadow: 0 0 50px rgba(255, 0, 255, 0);
+  transition: background 0.6s ease;
+}
+
+/* === TITTEL === */
+.favorites-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  margin-top: -40px;
+  background: linear-gradient(90deg, #93016c, #ff03bc, #a30168);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+.favorites-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.favorites-section {
+  background-color: #111111cc;
+  border-radius: 12px;
+  border: solid 2px rgb(255, 0, 153);
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.523);
+}
+
+.favorites-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #ff00d9;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0);
+  /*display: inline-block;*/
+  padding-bottom: 5px;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.favorite-card {
+  background: radial-gradient(
+    circle at bottom right,
+    rgba(141, 134, 2, 0.753),
+    rgba(0, 125, 125, 0),
+    rgba(255, 0, 195, 0)
+  );
+  opacity: 0.9;
+  border: solid 2px rgb(128, 124, 0);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(255, 0, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.favorite-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 15px rgba(255, 0, 195, 0.4);
+}
+
+.favorite-card img {
+  width: 35%;
+  height: 100px;
+  object-fit: cover;
+  border-right: 3px solid #ff0000;
+  flex-shrink: 0;
+}
+
+.favorite-card-content {
+  padding: 10px 15px;
+  flex: 1;
+}
+
+.favorite-card-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  color: #fbf9f8;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.3);
+}
+
+.favorite-card-content .rating {
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.rank {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: linear-gradient(90deg, #ff0044, #ff0000);
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.4);
+}
+
+/* === UNDERVURDERTE === */
+.underrated .favorite-card {
+  background: radial-gradient(
+    circle at bottom right,
+    rgba(0, 234, 255, 0.305),
+    rgba(0, 125, 125, 0),
+    rgba(255, 0, 217, 0.392)
+  );
+  opacity: 0.9;
+  border: solid 2px purple;
+}
+
+.underrated .favorite-card:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 183, 0.4);
+}
+
+/* === MOBIL === */
+@media (max-width: 900px) {
+  .favorites-wrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .favorite-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .favorite-card img {
+    width: 100%;
+    height: 160px;
+    border-right: none;
+    border-bottom: 2px solid #ff00cc;
+  }
+
+  .favorite-card-content {
+    padding: 15px;
+  }
+
+  .favorite-card-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .favorite-card-content .rating {
+    font-size: 1rem;
+  }
+}

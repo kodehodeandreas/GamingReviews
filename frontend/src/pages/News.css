@@ -1,0 +1,343 @@
+.news-page {
+  background-attachment: fixed;
+  padding: 50px 30px 50px;
+  max-width: 1500px;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+}
+
+.news-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #f4f1f3;
+  margin-bottom: 40px;
+  text-shadow: 0 0 2px rgba(117, 1, 117, 0);
+}
+
+.news-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  padding: 2px 14px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+
+  color: white;
+  z-index: 5;
+
+  /*border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 12px;*/
+
+  backdrop-filter: blur(60px);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+
+  z-index: 10;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.news-card {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: #ededed;
+  box-shadow: 0 3px 8px rgba(255, 0, 208, 0);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.news-card > img {
+  width: 100%;
+  height: 180px;
+  object-position: center;
+  position: relative;
+  display: block;
+}
+
+.news-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.news-card-content h2 {
+  color: #ff00aa;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card-content p {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card-content small {
+  color: #858585;
+}
+
+.news-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.news-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.platform-icon-row-news {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: -5px;
+  gap: 20px;
+}
+
+.platform-badge-news {
+  width: 16px;
+  height: 16px;
+  justify-content: center;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+.platform-badge-news:hover {
+  opacity: 1;
+}
+
+/* =======================================================
+   DARK MODE
+======================================================= */
+[data-theme="dark"] .news-page {
+  background: radial-gradient(
+      circle at top right,
+      rgba(255, 0, 153, 0.323),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(0, 247, 255, 0.225),
+      transparent 50%
+    ),
+    linear-gradient(to bottom, #38012c93 0%, #150d1f 80%, #0b0811 100%);
+  background-attachment: fixed;
+}
+
+[data-theme="light"] .news-page {
+  background: radial-gradient(
+      circle at top right,
+      rgb(245, 152, 2),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(249, 143, 3, 0.922),
+      transparent 50%
+    ),
+    linear-gradient(to bottom, #f87204 0%, #fa0694 80%, #ed087e 100%);
+  background-attachment: fixed;
+}
+
+[data-theme="dark"] .news-card {
+  background: rgba(25, 20, 35, 0.45); /* Gjennomsiktig mørk glassfølelse */
+  border: 1px solid rgba(255, 0, 180, 0.25);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
+  border-radius: 14px;
+  box-shadow: 0 0 5px rgba(255, 0, 255, 0.625),
+    inset 0 0 20px rgba(255, 0, 255, 0.436);
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+[data-theme="dark"] .news-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3),
+    inset 0 0 40px rgba(255, 0, 221, 0.567);
+  border-color: rgba(255, 0, 180, 0.45);
+}
+
+[data-theme="dark"] .news-card-content {
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme="dark"] .news-card-content h2 {
+  color: rgb(153, 152, 152);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .news-card-content p {
+  color: #f4f4f4;
+  font-weight: 300;
+  line-height: 1.6;
+  text-shadow: 0 0 4px rgba(255, 0, 255, 0.1);
+}
+
+[data-theme="dark"] .news-card-content small {
+  display: block;
+  margin-top: 10px;
+  color: #aaa;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .news-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at bottom right,
+    rgba(255, 0, 179, 0.745),
+    rgba(155, 6, 125, 0),
+    rgba(255, 0, 221, 0.311)
+  );
+  filter: blur(60px);
+  opacity: 0.6;
+  z-index: 0;
+  transition: all 0.8s ease;
+}
+
+[data-theme="dark"] .news-card:hover::before {
+  opacity: 0.9;
+  filter: blur(70px);
+  transform: scale(1.05);
+}
+
+/* =======================================================
+   LIGHT MODE
+======================================================= */
+[data-theme="light"] .news-card {
+  background: rgba(255, 255, 255, 0.856);
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(7, 0, 2, 0.889),
+    inset 0 0 10px rgba(248, 2, 170, 0.244);
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+[data-theme="light"] .news-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 1px 5px rgba(7, 0, 2, 0.889),
+    inset 0 0 10px rgba(246, 3, 169, 0.579);
+  border-color: rgba(248, 2, 80, 0);
+}
+
+/* === Innhold === */
+[data-theme="light"] .news-card-content {
+  padding: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme="light"] .news-card-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #e4007a, #aa0044);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .news-card-content p {
+  color: #2d2d2d;
+  font-weight: 400;
+  line-height: 1.6;
+  text-shadow: none;
+}
+
+/* === Dato / metadata === */
+[data-theme="light"] .news-card-content small {
+  display: block;
+  margin-top: 10px;
+  color: #4c4c4c;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* === Subtil pastelglød bak kortet === */
+[data-theme="light"] .news-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 145, 180, 0),
+    rgba(104, 216, 194, 0.219),
+    rgba(255, 0, 234, 0.649)
+  );
+  filter: blur(60px);
+  opacity: 0.6;
+  z-index: 0;
+  transition: all 0.8s ease;
+}
+
+/* === Hover: pastel aura blir tydeligere === */
+[data-theme="light"] .news-card:hover::before {
+  opacity: 0.9;
+  filter: blur(70px);
+  transform: scale(1.05);
+}
+
+.empty-msg {
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.load-more-container {
+  text-align: center;
+  margin-top: 40px;
+}

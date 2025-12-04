@@ -1,0 +1,97 @@
+/* =======================================================
+  DARK THEME  (default)
+======================================================= */
+:root {
+  --bg-color: #0b0811;
+  --card-bg: #1f1f1f;
+  --game-card-bg: #1f1f1f;
+  --text-color: #ffffff;
+  --accent-color: #f70098;
+  --accent-glow: rgba(255, 0, 255, 0.6);
+  --gradient: linear-gradient(90deg, #ff007f, #ff00aa, #ff00ff);
+}
+
+/* =======================================================
+   🌤️ LIGHT THEME (Miami Vice)
+======================================================= */
+[data-theme="light"] {
+  --bg-color: #acdff0;
+  --card-bg: #f9f5ff;
+  --game-card-bg: #f9f5ff;
+  --text-color: #191919;
+  --accent-color: #ff0099;
+  --accent-glow: rgba(255, 255, 255, 0);
+  --gradient: linear-gradient(90deg, #fe4f86, #1bfbce);
+  color-scheme: light;
+}
+
+/* =======================================================
+   GLOBAL BASE
+======================================================= */
+html,
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =======================================================
+   UI BUTTONS — DISSE ER DE ENESTE KNAPPER
+   SOM SKAL ENDRER SEG MED TEMA  
+======================================================= */
+.ui-btn {
+  background: var(--gradient);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(255, 145, 180, 0.2);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.ui-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(247, 15, 89, 0.656);
+}
+
+/* sørger for at galleri-/modal-piler ikke arver button-regler */
+.gallery-arrow,
+.modal-arrow,
+.close-modal {
+  all: unset;
+}
+
+@keyframes navbarGlow {
+  0% {
+    opacity: 0.4;
+    transform: scaleX(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scaleX(0.97);
+  }
+}
+
+/* =======================================================
+   LIGHT MODE OTHER FIXES
+======================================================= */
+[data-theme="light"] .latest-reviews-grid::before {
+  background: rgb(252, 251, 252);
+}
+
+[data-theme="dark"] .latest-reviews-grid::before {
+  background: rgb(160, 0, 112);
+}

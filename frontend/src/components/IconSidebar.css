@@ -1,0 +1,39 @@
+.icon-sidebar {
+  position: absolute;
+  top: 340px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 20;
+}
+
+.icon-sidebar img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 0.25s ease,
+    transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.35s ease;
+}
+
+.icon-sidebar img:hover {
+  opacity: 1;
+  transform: scale(1.25);
+  filter: brightness(0) invert(1);
+}
+
+.sidebar-divider {
+  width: 100%;
+  height: 1px;
+  background: rgb(255, 255, 255);
+  margin: 4px 0;
+}
+
+/* Mobil – skjul */
+@media (max-width: 900px) {
+  .icon-sidebar {
+    display: none;
+  }
+}

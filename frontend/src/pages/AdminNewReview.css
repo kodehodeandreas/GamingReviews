@@ -1,0 +1,303 @@
+/* === ADMIN-SIDE STYLING === */
+
+.admin-container {
+  max-width: 700px;
+  margin: 80px auto;
+  background-color: #1f1f1f;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.15);
+  color: rgb(255, 255, 255);
+
+  text-align: left;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === TITLER === */
+.admin-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  background: linear-gradient(90deg, #ff007f, #ff7b00, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+}
+
+/* === LÅS OPP SKJEMA === */
+.admin-unlock {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.admin-unlock input {
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid #ff00cc;
+  background-color: #2b2b2b;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.admin-unlock button {
+  background: linear-gradient(90deg, #ff007f, #ff00bf, #ff00ff);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 25px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-unlock button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+/* === FEILMELDING === */
+.admin-error {
+  text-align: center;
+  color: #ff4d4d;
+  margin-top: 10px;
+}
+
+/* === ADMIN SKJEMA === */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-form label {
+  font-weight: bold;
+  color: #ff7b00;
+}
+
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #2b2b2b;
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: none;
+  border-color: #ff00ff;
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.4);
+}
+
+.admin-form textarea {
+  resize: vertical;
+}
+
+/* === SEND INN KNAPP === */
+.admin-form button {
+  align-self: center;
+  background: linear-gradient(90deg, #ff007f, #ff00ff, #ff7b00);
+  color: white;
+  padding: 14px 35px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  box-shadow: 0 0 12px rgba(255, 0, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.admin-form button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+}
+
+/* === SUKSESSMELDING === */
+.success-message {
+  color: #40ff00;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* === CHARACTER COUNTER === */
+.form-row small {
+  display: block;
+  text-align: right;
+  color: #c7c7c7;
+  font-size: 0.85rem;
+}
+
+.admin-new-review {
+  font-family: "Montserrat", sans-serif;
+  max-width: 800px;
+  margin: 120px auto 50px;
+  padding: 30px;
+  background: #303030c6;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+  color: #fff;
+}
+
+.admin-new-review h1 {
+  text-align: center;
+  color: #ff7b00;
+  margin-bottom: 25px;
+}
+
+.admin-new-review form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.admin-new-review input,
+.admin-new-review textarea,
+.admin-new-review select {
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #ff00cc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+}
+
+.platform-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.platform-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.admin-new-review button {
+  background: linear-gradient(90deg, #ff007f, #ff00d0, #ff00ff);
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.admin-new-review button:hover {
+  background: linear-gradient(90deg, #ff8400, #ff7b00);
+}
+
+.image-preview img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ff00cc;
+}
+
+.status-msg {
+  margin-top: 15px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.status-msg.success {
+  color: #00ff0d;
+  text-shadow: 0 0 8px rgba(0, 255, 128, 0.4);
+}
+
+.status-msg.error {
+  color: #ff3b6a;
+  text-shadow: 0 0 8px rgba(255, 0, 100, 0.3);
+}
+
+/* === GALLERI-FORHÅNDSVISNING === */
+.gallery-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.gallery-input-row input {
+  flex: 1;
+}
+
+.add-img-btn,
+.remove-img-btn {
+  background: linear-gradient(90deg, #ff007f, #ff00ff);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 6px 10px;
+  transition: all 0.2s ease;
+}
+
+.add-img-btn:hover,
+.remove-img-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.4);
+}
+
+.remove-img-btn {
+  background: #ff3b6a;
+}
+
+.gallery-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.gallery-thumb {
+  width: 120px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 0, 180, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.gallery-thumb:hover {
+  transform: scale(1.05);
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
