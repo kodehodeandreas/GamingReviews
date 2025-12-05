@@ -20,17 +20,20 @@ const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://kodehodeandreas.github.io"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 app.use("/api/upload", uploadRoutes);
 
 // Koble til MongoDB Atlas
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB koblet");
     app.listen(PORT, () => console.log(`🚀 Server kjører på port ${PORT}`));
