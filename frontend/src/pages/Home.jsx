@@ -28,6 +28,10 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [gotw, setGotw] = useState(null);
+  const [comingSoon, setComingSoon] = useState([]);
+  const [currentSoon, setCurrentSoon] = useState(0);
+  const [prevSoonIndex, setPrevSoonIndex] = useState(null);
+  const [editorsPick, setEditorsPick] = useState(null);
 
   const fetchGames = async (pageNumber = 1, search = "") => {
     setLoading(true);
@@ -88,6 +92,39 @@ function Home() {
       .get("https://gamereviews-not4.onrender.com/api/reviews/gotw")
       .then((res) => setGotw(res.data))
       .catch(() => setGotw(null));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.rawg.io/api/games?key=fe169d60659940f4b367cdadc736b61c` +
+          `&dates=2026-01-01,2026-12-31` +
+          `&ordering=-added` +
+          `&page_size=6`
+      )
+      .then((res) => setComingSoon(res.data.results || []))
+      .catch((err) => console.error("Kunne ikke hente Coming Soon:", err));
+  }, []);
+
+  useEffect(() => {
+    if (!comingSoon.length) return;
+
+    const interval = setInterval(() => {
+      setPrevSoonIndex(currentSoon);
+      setCurrentSoon((prev) => (prev + 1) % comingSoon.length);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [comingSoon, currentSoon]);
+
+  useEffect(() => {
+    axios
+      .get("https://gamereviews-not4.onrender.com/api/reviews")
+      .then((res) => {
+        const review = res.data.find((post) => post.type === "review");
+        setEditorsPick(review || null);
+      })
+      .catch((err) => console.error("Kunne ikke hente editor's pick:", err));
   }, []);
 
   useEffect(() => {
@@ -292,6 +329,88 @@ function Home() {
               </div>
             </div>
           )}
+
+          {/* === COMING SOON (SLIDER) === */}
+          <div className="home-double-section">
+            <div className="double-card coming-soon">
+              <h3>🕒 Coming Soon (2026)</h3>
+
+              <div className="soon-wrapper">
+                {comingSoon.map((game, index) => {
+                  let className = "soon-slide";
+
+                  if (index === currentSoon) {
+                    className += " fade-in";
+                  } else if (index === prevSoonIndex) {
+                    className += " fade-out";
+                  } else {
+                    className += " hidden-slide";
+                  }
+
+                  return (
+                    <Link
+                      key={game.id}
+                      to={`/game/${game.id}`}
+                      className={className}
+                    >
+                      <div className="soon-image-wrapper">
+                        <img src={game.background_image} alt={game.name} />
+                      </div>
+
+                      <div className="soon-info">
+                        <h4>{game.name}</h4>
+                        <small>
+                          {game.released
+                            ? `Release: ${game.released}`
+                            : "Release: TBA"}
+                        </small>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Dots */}
+              <div className="soon-dots">
+                {comingSoon.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`dot ${i === currentSoon ? "active" : ""}`}
+                    onClick={() => {
+                      setPrevSoonIndex(currentSoon);
+                      setCurrentSoon(i);
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Editor's Pick */}
+            {editorsPick && (
+              <div className="double-card editors-pick">
+                <h3>⭐ Editor’s Pick</h3>
+
+                <img
+                  src={`${
+                    import.meta.env.BASE_URL
+                  }${editorsPick.imageUrl.replace(/^\/+/, "")}`}
+                  alt={editorsPick.title}
+                />
+
+                <h4>{editorsPick.title}</h4>
+                <p>
+                  {editorsPick.summary || editorsPick.content.slice(0, 120)}...
+                </p>
+
+                <Link
+                  to={`/review/${editorsPick._id}`}
+                  className="read-more-link"
+                >
+                  Les mer →
+                </Link>
+              </div>
+            )}
+          </div>
 
           <h2 className="home-subtitle">Alle spill</h2>
 
