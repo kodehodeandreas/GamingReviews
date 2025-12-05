@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig(({ mode }) => {
   return {
-    base: mode === "production" ? "/GameReviews/" : "/",
+    base: mode === "production" ? "/GamingReviews/" : "/",
     plugins: [react()],
   };
 });
