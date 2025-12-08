@@ -315,7 +315,7 @@
  Siste nytt kort — DARK MODE
  -------------------------------------------*/
 [data-theme="dark"] .review-card-horizontal {
-  background: rgba(86, 0, 69, 0.829);
+  background: rgba(35, 0, 28, 0.75);
   border: 1px solid rgba(255, 0, 200, 0.707);
   backdrop-filter: blur(12px) saturate(140%);
   -webkit-backdrop-filter: blur(12px) saturate(140%);
@@ -792,7 +792,7 @@ Siste nytt kort - LIGHT MODE
 
 .double-card {
   background: #0b0811;
-  padding: 20px;
+  padding: 20px 0px;
   text-align: center;
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
@@ -893,7 +893,7 @@ Siste nytt kort - LIGHT MODE
   height: 300px;
   width: 100%;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 0px;
   margin-bottom: 10px;
 }
 
@@ -936,7 +936,7 @@ Siste nytt kort - LIGHT MODE
   height: 300px;
   object-fit: cover;
   margin-bottom: 10px;
-  border-radius: 10px;
+  border-radius: 00px;
 }
 
 @media (max-width: 768px) {
