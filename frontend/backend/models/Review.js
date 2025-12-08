@@ -1,14 +1,35 @@
 import mongoose from "mongoose";
 
 const reviewSchema = new mongoose.Schema({
-  gameId: { type: String },
+  gameId: {
+    type: String,
+    required: false,
+  },
 
-  title: { type: String, required: true },
-  summary: { type: String, default: "" },
-  content: { type: String, required: true },
+  title: {
+    type: String,
+    required: true,
+  },
 
-  imageUrl: { type: String },
-  secondaryImageUrl: { type: String, default: "" },
+  summary: {
+    type: String,
+    default: "",
+  },
+
+  content: {
+    type: String,
+    required: true,
+  },
+
+  imageUrl: {
+    type: String,
+    required: false,
+  },
+
+  secondaryImageUrl: {
+    type: String,
+    default: "",
+  },
 
   type: {
     type: String,
@@ -16,19 +37,41 @@ const reviewSchema = new mongoose.Schema({
     default: "review",
   },
 
+  // ✅ Editors Pick flag
   editorsPick: {
     type: Boolean,
     default: false,
   },
 
-  date: { type: Date, default: Date.now },
+  platforms: {
+    type: [String],
+    default: [],
+  },
 
-  galleryImages: { type: [String], default: [] },
-  platforms: { type: [String], default: [] },
+  galleryImages: {
+    type: [String],
+    default: [],
+  },
 
-  pros: { type: [String], default: [] },
-  cons: { type: [String], default: [] },
-  rating: { type: Number, default: null },
+  pros: {
+    type: [String],
+    default: [],
+  },
+
+  cons: {
+    type: [String],
+    default: [],
+  },
+
+  rating: {
+    type: Number,
+    default: null,
+  },
+
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export default mongoose.model("Review", reviewSchema);
