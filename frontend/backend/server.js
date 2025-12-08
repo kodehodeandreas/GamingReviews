@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import uploadRoutes from "./routes/upload.js";
+import Review from "./models/Review.js";
 
 dotenv.config();
 
@@ -39,27 +40,6 @@ mongoose
     app.listen(PORT, () => console.log(`🚀 Server kjører på port ${PORT}`));
   })
   .catch((err) => console.error("❌ MongoDB feil:", err));
-
-/* ============================================================
-   SCHEMA
-============================================================ */
-const reviewSchema = new mongoose.Schema({
-  gameId: { type: String, required: false },
-  title: { type: String, required: true },
-  summary: { type: String, trim: true, maxlength: 350, default: "" },
-  content: { type: String, required: true },
-  imageUrl: { type: String, required: true },
-  secondaryImageUrl: { type: String, default: "" },
-  galleryImages: { type: [String], default: [] },
-  pros: { type: [String], default: [] },
-  cons: { type: [String], default: [] },
-  rating: { type: Number, default: null },
-  type: { type: String, enum: ["review", "news", "gotw"], default: "review" },
-  platforms: { type: [String], default: [] },
-  date: { type: Date, default: Date.now },
-});
-
-const Review = mongoose.model("Review", reviewSchema);
 
 /* ============================================================
    🔹 NY KODE — Enkel admin-login med JWT
@@ -152,6 +132,7 @@ app.post("/api/reviews", verifyAdmin, async (req, res) => {
       rating,
       type,
       platforms,
+      editorsPick,
     } = req.body;
 
     // Sjekk minimumsverdier
@@ -159,6 +140,13 @@ app.post("/api/reviews", verifyAdmin, async (req, res) => {
       return res
         .status(400)
         .json({ message: "Tittel, innhold og hovedbilde er påkrevd." });
+    }
+
+    if (editorsPick === true) {
+      await Review.updateMany(
+        { editorsPick: true },
+        { $set: { editorsPick: false } }
+      );
     }
 
     // Opprett nytt dokument
@@ -178,6 +166,7 @@ app.post("/api/reviews", verifyAdmin, async (req, res) => {
       cons: Array.isArray(cons) ? cons : [],
       rating: rating ? parseFloat(rating) : null,
       type: type || "review",
+      editorsPick: editorsPick || false,
       platforms: Array.isArray(platforms) ? platforms : [],
       date: new Date(),
     });
@@ -209,6 +198,21 @@ app.get("/api/reviews/:id", async (req, res) => {
   }
 });
 
+app.get("/api/reviews/editors-pick", async (req, res) => {
+  try {
+    const pick = await Review.findOne({ editorsPick: true }).sort({ date: -1 });
+
+    if (!pick) {
+      return res.status(404).json({ message: "Ingen Editor’s Pick satt" });
+    }
+
+    res.json(pick);
+  } catch (err) {
+    console.error("Editors Pick feil:", err);
+    res.status(500).json({ message: "Kunne ikke hente Editors Pick" });
+  }
+});
+
 app.delete("/api/reviews/:id", verifyAdmin, async (req, res) => {
   try {
     const deleted = await Review.findByIdAndDelete(req.params.id);
@@ -221,9 +225,17 @@ app.delete("/api/reviews/:id", verifyAdmin, async (req, res) => {
 
 app.put("/api/reviews/:id", verifyAdmin, async (req, res) => {
   try {
+    if (req.body.editorsPick === true) {
+      await Review.updateMany(
+        { editorsPick: true },
+        { $set: { editorsPick: false } }
+      );
+    }
+
     const updated = await Review.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
+
     if (!updated) return res.status(404).json({ message: "Ikke funnet" });
     res.json(updated);
   } catch (err) {

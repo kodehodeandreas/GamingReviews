@@ -21,7 +21,9 @@ const upload = multer({ storage });
 
 router.post("/", upload.single("image"), (req, res) => {
   try {
-    const fileUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const fileUrl = `${req.protocol}://${req.get("host")}/uploads/${
+      req.file.filename
+    }`;
     res.json({ imageUrl: fileUrl });
   } catch (err) {
     console.error("Opplastning feilet:", err);

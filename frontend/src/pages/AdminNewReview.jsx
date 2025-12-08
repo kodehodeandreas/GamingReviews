@@ -22,6 +22,7 @@ function AdminNewReview() {
   const [rating, setRating] = useState("");
   const [status, setStatus] = useState({ loading: false, message: "" });
   const [galleryImages, setGalleryImages] = useState([]);
+  const [editorsPick, setEditorsPick] = useState(false);
 
   // === HENT EKSISTERENDE REVIEW HVIS REDIGERING ===
   useEffect(() => {
@@ -43,6 +44,7 @@ function AdminNewReview() {
           setRating(r.rating || "");
           setPreview(r.imageUrl || "");
           setGalleryImages(r.galleryImages || []);
+          setEditorsPick(r.editorsPick || false);
         })
         .catch((err) => console.error("Feil ved henting av review:", err));
     }
@@ -71,6 +73,7 @@ function AdminNewReview() {
       cons: cons.filter((c) => c.trim() !== ""),
       rating: rating ? parseFloat(rating) : null,
       galleryImages,
+      editorsPick,
     };
 
     try {
@@ -182,6 +185,15 @@ function AdminNewReview() {
           <option value="news">Nyhet</option>
           <option value="gotw">Game of the Week</option>
         </select>
+
+        <label className="editors-pick-label">
+          <input
+            type="checkbox"
+            checked={editorsPick}
+            onChange={(e) => setEditorsPick(e.target.checked)}
+          />
+          ⭐ Sett som Editor’s Pick
+        </label>
 
         <label>Plattformer</label>
         <div className="platform-checkboxes">

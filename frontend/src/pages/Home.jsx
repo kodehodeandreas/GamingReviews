@@ -119,12 +119,14 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("https://gamereviews-not4.onrender.com/api/reviews")
+      .get("https://gamereviews-not4.onrender.com/api/reviews/editors-pick")
       .then((res) => {
-        const review = res.data.find((post) => post.type === "review");
-        setEditorsPick(review || null);
+        setEditorsPick(res.data);
       })
-      .catch((err) => console.error("Kunne ikke hente editor's pick:", err));
+      .catch(() => {
+        console.warn("Ingen Editors Pick satt");
+        setEditorsPick(null);
+      });
   }, []);
 
   useEffect(() => {

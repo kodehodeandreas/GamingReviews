@@ -17,7 +17,13 @@ router.get("/game/:gameId", async (req, res) => {
 // Post nytt review (review, news eller gotw)
 router.post("/", async (req, res) => {
   try {
+    if (req.body.editorsPick === true) {
+      // Fjern Editors Pick fra alle andre
+      await Review.updateMany({ editorsPick: true }, { editorsPick: false });
+    }
+
     const review = new Review(req.body);
+
     const savedReview = await review.save();
     res.json(savedReview);
   } catch (err) {
@@ -51,6 +57,23 @@ router.get("/gotw", async (req, res) => {
   } catch (err) {
     console.error("Feil ved henting av GOTW:", err);
     res.status(500).json({ message: "Kunne ikke hente GOTW" });
+  }
+});
+
+router.get("/editors-pick", async (req, res) => {
+  try {
+    const editorsPick = await Review.findOne({ editorsPick: true }).sort({
+      date: -1,
+    });
+
+    if (!editorsPick) {
+      return res.status(404).json({ message: "Ingen Editors Pick satt" });
+    }
+
+    res.json(editorsPick);
+  } catch (err) {
+    console.error("Editors Pick feil:", err);
+    res.status(500).json({ message: "Kunne ikke hente Editors Pick" });
   }
 });
 
