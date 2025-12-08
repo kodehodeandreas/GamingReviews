@@ -120,11 +120,9 @@ function Home() {
   useEffect(() => {
     axios
       .get("https://gamereviews-not4.onrender.com/api/reviews/editors-pick")
-      .then((res) => {
-        setEditorsPick(res.data);
-      })
-      .catch(() => {
-        console.warn("Ingen Editors Pick satt");
+      .then((res) => setEditorsPick(res.data))
+      .catch((err) => {
+        console.log("Ingen Editors Pick satt");
         setEditorsPick(null);
       });
   }, []);
@@ -392,12 +390,7 @@ function Home() {
               <div className="double-card editors-pick">
                 <h3>⭐ Editor’s Pick</h3>
 
-                <img
-                  src={`${
-                    import.meta.env.BASE_URL
-                  }${editorsPick.imageUrl.replace(/^\/+/, "")}`}
-                  alt={editorsPick.title}
-                />
+                <img src={editorsPick.imageUrl} alt={editorsPick.title} />
 
                 <h4>{editorsPick.title}</h4>
                 <p>
