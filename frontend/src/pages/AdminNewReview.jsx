@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./AdminNewReview.css";
 
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function AdminNewReview() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -28,7 +30,7 @@ function AdminNewReview() {
   useEffect(() => {
     if (id) {
       axios
-        .get(`https://gamereviews-not4.onrender.com/api/reviews/${id}`)
+        .get(`${API}/api/reviews/${id}`)
         .then((res) => {
           const r = res.data;
           setTitle(r.title);
@@ -54,7 +56,7 @@ function AdminNewReview() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token"); // 🔹 NY KODE: hent token
+    const token = localStorage.getItem("token");
     if (!token) {
       alert("Du må være innlogget for å publisere eller redigere.");
       return;
@@ -80,24 +82,16 @@ function AdminNewReview() {
       setStatus({ loading: true, message: "" });
 
       if (id) {
-        // OPPDATER (PUT med token)
-        await axios.put(
-          `https://gamereviews-not4.onrender.com/api/reviews/${id}`,
-          newReview,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        // OPPDATER
+        await axios.put(`${API}/api/reviews/${id}`, newReview, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setStatus({ loading: false, message: "✅ Anmeldelsen ble oppdatert!" });
       } else {
-        // NY REVIEW (POST med token)
-        await axios.post(
-          "https://gamereviews-not4.onrender.com/api/reviews",
-          newReview,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        // NY REVIEW
+        await axios.post(`${API}/api/reviews`, newReview, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setStatus({ loading: false, message: "✅ Innlegget ble publisert!" });
       }
 
@@ -179,7 +173,6 @@ function AdminNewReview() {
         />
 
         <label>Type</label>
-
         <select value={type} onChange={(e) => setType(e.target.value)}>
           <option value="review">Anmeldelse</option>
           <option value="news">Nyhet</option>
