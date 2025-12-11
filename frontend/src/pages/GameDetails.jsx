@@ -8,7 +8,6 @@ function GameDetails() {
   const { id } = useParams();
   const [game, setGame] = useState(null);
   const [reviews, setReviews] = useState([]);
-  const [newReview, setNewReview] = useState("");
 
   useEffect(() => {
     axios
@@ -50,7 +49,6 @@ function GameDetails() {
                 <Link to={`/review/${r._id}`} className="read-more">
                   Les mer →
                 </Link>
-                Les mer →
               </div>
             ))
           )}
