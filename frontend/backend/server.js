@@ -52,7 +52,7 @@ app.post("/api/admin/login", (req, res) => {
   const { password } = req.body;
 
   if (password === ADMIN_PASSWORD) {
-    const token = jwt.sign({ role: "admin" }, JWT_SECRET, { expiresIn: "2h" });
+    const token = jwt.sign({ role: "admin" }, JWT_SECRET, { expiresIn: "6h" });
     return res.json({ token });
   }
 
