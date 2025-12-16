@@ -96,6 +96,22 @@ function ReviewDetails() {
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
           components={{
+            p: ({ node, children }) => {
+              // Hvis p inneholder block-elementer, returner bare children
+              if (
+                node.children?.some(
+                  (child) =>
+                    child.tagName === "figure" ||
+                    child.tagName === "youtube" ||
+                    child.tagName === "section" ||
+                    child.tagName === "hr"
+                )
+              ) {
+                return <>{children}</>;
+              }
+
+              return <p>{children}</p>;
+            },
             img: ({ alt, src }) => (
               <figure className="review-image-block">
                 <img
@@ -109,6 +125,19 @@ function ReviewDetails() {
                   </figcaption>
                 )}
               </figure>
+            ),
+
+            youtube: ({ node, ...props }) => (
+              <div className="review-video-block">
+                <iframe
+                  src={`https://www.youtube.com/embed/${props.id}`}
+                  title="YouTube video"
+                  loading="lazy"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
             ),
           }}
         >
