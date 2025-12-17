@@ -1,11 +1,11 @@
 .review-details {
   max-width: 1000px;
-  margin: 40px auto 50px;
+  margin: -20px auto -20px;
   padding: 0 20px;
-  color: #fff;
+  padding-bottom: 40px;
   background-color: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(7, 0, 7, 0.15);
+  box-shadow: 0 0 20px rgba(7, 0, 7, 0);
   color: var(--text-color);
   line-height: 1.7;
   font-size: 1.2rem;
@@ -13,13 +13,13 @@
 
 .review-header {
   text-align: center;
-  margin: 10px;
+  margin-top: 10px;
 }
 
 .review-header h1 {
   font-size: 2.3rem;
   font-family: "Montserrat", sans-serif;
-  padding-top: 20px;
+  padding-top: 40px;
   text-align: center;
   background: var(--gradient);
   -webkit-background-clip: text;
@@ -52,7 +52,7 @@
   max-width: 90%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(196, 1, 144, 0.3);
+  box-shadow: 0 0 15px rgba(196, 1, 144, 0);
 }
 
 .review-date {
@@ -97,7 +97,7 @@
   max-width: 80%;
   aspect-ratio: 16 / 9;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 15px rgb(0, 0, 0);
 }
 
 .review-content {
@@ -181,7 +181,7 @@
     var(--accent-color),
     transparent
   );
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 hr {
@@ -221,6 +221,10 @@ hr {
   opacity: 0.8;
 }
 
+[data-theme="light"] .review-image-caption {
+  color: rgb(38, 38, 38);
+}
+
 .review-content img {
   display: block;
   margin: 0 auto 25px auto;
@@ -239,9 +243,8 @@ hr {
   padding: 25px 30px;
   max-width: 850px;
   border-left: 6px solid var(--accent-color);
-  background: rgba(20, 10, 30, 0.6);
+  background: rgba(16, 40, 45, 0.385);
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.15);
   font-family: serif;
   overflow: visible;
 }
@@ -289,6 +292,34 @@ hr {
   margin-top: 150px;
 }
 
+[data-theme="light"] .opinion-box {
+  position: relative;
+  margin: 50px auto;
+  padding: 25px 30px;
+  max-width: 850px;
+  border-left: 6px solid rgb(0, 228, 228);
+  background: rgba(255, 163, 229, 0.344);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.15);
+  font-family: serif;
+  overflow: visible;
+}
+
+[data-theme="light"] .opinion-box::before {
+  content: "“";
+  position: absolute;
+  top: -30px;
+  left: 550px;
+  font-size: 380px;
+  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  line-height: 1;
+  color: rgb(0, 145, 145);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
 /*-----------------------------------------------
   ----------------SIGNATUR----------------------
 -------------------------------------------------*/
@@ -466,7 +497,7 @@ hr {
 
 /* === GALLERI === */
 .review-gallery {
-  margin-top: 60px;
+  margin-top: 40px;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -500,6 +531,11 @@ hr {
   scrollbar-width: none;
 }
 
+[data-theme="light"] .gallery-images {
+  border-right: #00b7ff 3px solid;
+  border-left: #00b7ff 3px solid;
+}
+
 .gallery-images::-webkit-scrollbar {
   display: none;
 }
@@ -514,13 +550,17 @@ hr {
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
+[data-theme="light"] .gallery-images img {
+  border: 1px solid rgb(0, 84, 187);
+}
+
 .gallery-images img:hover {
   transform: scale(1.1);
   box-shadow: 0 0 10px rgba(255, 0, 162, 0);
   filter: brightness(1.15);
 }
 
-/* === GALLERI PILER (universal, not affected by mode) === */
+/* === GALLERI PILER === */
 .gallery-arrow {
   position: absolute;
   top: 50%;
@@ -534,6 +574,10 @@ hr {
   border-radius: 50%;
   z-index: 5;
   transition: color 0.3s ease, transform 0.3s ease;
+}
+
+[data-theme="light"] .gallery-arrow {
+  color: rgb(0, 119, 255);
 }
 
 .gallery-arrow:hover {
@@ -593,6 +637,10 @@ hr {
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(255, 0, 170, 0.988);
   animation: fadeInModal 0.5s ease;
+}
+
+[data-theme="light"] .modal-content img {
+  box-shadow: 0 0 20px rgba(0, 149, 255, 0.988);
 }
 
 @keyframes fadeInModal {
@@ -732,75 +780,8 @@ footer {
    DARK MODE
 ======================================================= */
 [data-theme="dark"] .review-details {
-  position: relative;
-  overflow: hidden;
-  background: rgba(15, 10, 25, 0.9);
-  border-radius: 14px;
-  border: 1px solid rgba(255, 0, 180, 0.3);
-  box-shadow: 0 0 25px rgba(255, 0, 255, 0.15);
-  transition: all 0.4s ease;
-}
-
-[data-theme="dark"] .review-details::before {
-  content: "";
-  position: absolute;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(
-    circle at bottom right,
-    rgba(255, 0, 200, 0.532),
-    rgba(0, 255, 255, 0.121),
-    rgba(4, 193, 183, 0)
-  );
-  filter: blur(60px);
-  z-index: 0;
-  animation: neonPulse 8s ease-in-out infinite alternate;
-}
-
-@keyframes neonPulse {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(10px, -10px) scale(1.05);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate(-8px, 12px) scale(1);
-    opacity: 0.6;
-  }
-}
-
-[data-theme="dark"] .review-details::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  border: 2px solid transparent;
-  background: linear-gradient(120deg, #ff00ff, #43f5f500, #ff00ff);
-  background-size: 300% 300%;
-  filter: blur(2px);
-  animation: borderShift 6s linear infinite;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  padding: 2px;
-  z-index: 0;
-}
-
-@keyframes borderShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  background: rgba(17, 7, 18, 0.9);
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0);
 }
 
 [data-theme="dark"] .review-header,
@@ -821,18 +802,13 @@ footer {
 }
 
 [data-theme="light"] .review-details {
-  position: relative;
-  overflow: hidden;
   background: radial-gradient(
-    circle at top left,
-    rgb(253, 253, 253),
-    rgb(255, 255, 255),
-    rgba(255, 255, 255, 0.977),
-    rgba(255, 255, 255, 0.948)
-  );
-  border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(255, 145, 180, 0);
-  border: 1px solid rgba(255, 182, 193, 0);
+      circle at top right,
+      rgb(251, 249, 250),
+      transparent 45%
+    ),
+    radial-gradient(circle at bottom left, rgb(251, 252, 253), transparent 45%),
+    linear-gradient(to bottom, #ffffff, #ffffff, #fff);
 }
 
 @keyframes pastelGlowShift {
@@ -860,32 +836,38 @@ footer {
   position: relative;
   z-index: 1;
 }
-/*her slutter det nye*/
 
 [data-theme="light"] .review-header h1 {
-  background: var(--gradient);
+  background: rgb(0, 183, 183);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: none;
 }
 
 [data-theme="light"] .review-summary {
-  color: #222222;
+  color: #202020;
 }
 
 [data-theme="light"] .review-content {
-  background-color: #ffffff;
-  color: #222;
-  box-shadow: 0 0 20px rgba(200, 80, 190, 0);
+  background: rgba(249, 247, 247, 0.88);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(255, 0, 180, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
 }
 
-[data-theme="light"] .review-content h2,
-[data-theme="light"] .review-content h3 {
+[data-theme="light"] .review-content h2 {
   color: var(--accent-color);
-  border-left: 4px solid var(--accent-color);
-  text-shadow: none;
+  border-left: 5px solid var(--accent-color);
+  padding-left: 12px;
+  margin-top: 60px;
 }
 
+[data-theme="light"] .review-content h3 {
+  color: #fe2a91;
+  margin-top: 40px;
+}
 [data-theme="light"] .review-content p {
   color: #212121;
 }
@@ -922,11 +904,11 @@ footer {
 }
 
 [data-theme="light"] .back-btn {
-  background: linear-gradient(90deg, #ec2668, #09c8f3);
+  background: linear-gradient(90deg, #ec2668, #09a1f3);
   box-shadow: 0 0 15px rgba(255, 0, 150, 0.3);
 }
 
 [data-theme="light"] .back-btn:hover {
-  background: linear-gradient(90deg, #ec0176, #0299ea);
+  background: linear-gradient(90deg, #ec0176, #0266f2);
   box-shadow: 0 0 25px rgba(0, 81, 255, 0.4);
 }

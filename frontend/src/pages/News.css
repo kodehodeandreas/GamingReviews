@@ -163,15 +163,15 @@
 [data-theme="light"] .news-page {
   background: radial-gradient(
       circle at top right,
-      rgb(245, 152, 2),
+      rgb(250, 249, 247),
       transparent 40%
     ),
     radial-gradient(
       circle at bottom left,
-      rgba(249, 143, 3, 0.922),
+      rgba(250, 248, 246, 0.922),
       transparent 50%
     ),
-    linear-gradient(to bottom, #f87204 0%, #fa0694 80%, #ed087e 100%);
+    linear-gradient(to bottom, #fbf9f7 0%, #f7f4f6 80%, #f3ecf0 100%);
   background-attachment: fixed;
 }
 
@@ -262,6 +262,10 @@
     inset 0 0 10px rgba(248, 2, 170, 0.244);
   overflow: hidden;
   transition: all 0.4s ease;
+}
+
+[data-theme="light"] .news-title {
+  color: #12a9f5;
 }
 
 [data-theme="light"] .news-card:hover {

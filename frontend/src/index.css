@@ -2,7 +2,7 @@
   DARK THEME  (default)
 ======================================================= */
 :root {
-  --bg-color: #0b0811;
+  --bg-color: #1b0028;
   --card-bg: #1f1f1f;
   --game-card-bg: #1f1f1f;
   --text-color: #ffffff;
@@ -15,13 +15,13 @@
    🌤️ LIGHT THEME (Miami Vice)
 ======================================================= */
 [data-theme="light"] {
-  --bg-color: #acdff0;
+  --bg-color: #d6eff8;
   --card-bg: #f9f5ff;
   --game-card-bg: #f9f5ff;
   --text-color: #191919;
   --accent-color: #ff0099;
   --accent-glow: rgba(255, 255, 255, 0);
-  --gradient: linear-gradient(90deg, #fe4f86, #1bfbce);
+  --gradient: linear-gradient(90deg, #fe4f86, #02f8c7);
   color-scheme: light;
 }
 
@@ -89,7 +89,7 @@ body {
    LIGHT MODE OTHER FIXES
 ======================================================= */
 [data-theme="light"] .latest-reviews-grid::before {
-  background: rgb(252, 251, 252);
+  background: rgb(255, 0, 255);
 }
 
 [data-theme="dark"] .latest-reviews-grid::before {

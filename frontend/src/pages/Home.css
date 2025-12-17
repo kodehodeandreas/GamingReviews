@@ -109,19 +109,17 @@
 [data-theme="light"] .home {
   background: radial-gradient(
       circle at top right,
-      rgba(0, 170, 255, 0.25),
-      transparent 45%
+      rgba(255, 0, 170, 0.08),
+      transparent 50%
     ),
     radial-gradient(
       circle at bottom left,
-      rgba(255, 0, 180, 0.18),
-      transparent 45%
+      rgba(0, 170, 255, 0.08),
+      transparent 50%
     ),
-    linear-gradient(to bottom, #fbbd1f 0%, #e78300f7 60%, #9a0067 100%);
+    linear-gradient(to bottom, #ffffff, #fff6fb, #ffffff);
 
-  background-attachment: fixed;
-  border-radius: 0;
-  box-shadow: 0 0 35px rgba(0, 0, 50, 0.08);
+  background-attachment: scroll; /* viktig */
   transition: background 0.6s ease;
 }
 
@@ -148,7 +146,7 @@
   letter-spacing: 0.2px;
   margin-bottom: 30px;
   margin-top: -30px;
-  background: linear-gradient(90deg, #fc038c, #f9f6f6, #f802a2);
+  background: linear-gradient(90deg, #ff078f, #00a0d0, #f802a2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 5px rgba(255, 0, 195, 0);
@@ -163,6 +161,10 @@
   color: #ffffff;
   text-decoration: none;
   text-shadow: 0 0 10px rgba(255, 123, 0, 0);
+}
+
+[data-theme="light"] .home-subtitle {
+  color: rgb(0, 150, 181);
 }
 
 /* === SISTE ANMELDELSER OG NYHETER=== */
@@ -338,7 +340,7 @@
 
 [data-theme="dark"] .review-card-content h3 {
   color: var(--accent-color);
-  background: var(--gradient);
+  background: rgb(0, 179, 224); /*farge på h3*/
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -377,33 +379,21 @@
 Siste nytt kort - LIGHT MODE 
 ---------------------------------------------*/
 [data-theme="light"] .review-card-horizontal {
-  background: linear-gradient(
-    to bottom right,
-    rgb(249, 248, 248),
-    rgba(241, 241, 241, 0.9),
-    rgba(252, 98, 190, 0.719)
-  );
-
-  border: 2px solid rgba(246, 247, 249, 0.6);
+  background: linear-gradient(to bottom right, #ffffff, #ffedfcd3);
+  border: 2px solid rgba(242, 3, 178, 0.6);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   border-radius: 12px;
   overflow: hidden;
-
-  box-shadow: 0 8px 18px rgba(40, 60, 120, 0),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
-
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
   transition: all 0.4s ease;
 }
 
 /* HOVER */
 [data-theme="light"] .review-card-horizontal:hover {
-  transform: translateY(-6px) scale(1.025);
-
-  box-shadow: 0 2px 10px rgba(246, 0, 193, 0), 0 0 18px rgba(3, 4, 6, 0),
-    inset 0 0 15px rgba(255, 255, 255, 0.85);
-
-  border-color: rgba(246, 243, 245, 0.9);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* IMAGE */
@@ -413,7 +403,7 @@ Siste nytt kort - LIGHT MODE
 
 /* TITLE */
 [data-theme="light"] .review-card-content h3 {
-  background: linear-gradient(90deg, #ff007b, #f801aa);
+  background: linear-gradient(90deg, #019ae1, #b00098);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -429,24 +419,8 @@ Siste nytt kort - LIGHT MODE
 
 /* BACKGROUND LIGHT GLOW */
 [data-theme="light"] .review-card-horizontal::before {
-  content: "";
-  position: absolute;
-  top: -40%;
-  left: -40%;
-  width: 180%;
-  height: 180%;
-
-  background: radial-gradient(
-    circle at top left,
-    rgba(100, 160, 255, 0.35),
-    rgba(180, 120, 255, 0.15),
-    rgba(255, 255, 255, 0)
-  );
-
-  filter: blur(80px);
-  opacity: 0.5;
-  z-index: 0;
-  transition: all 0.8s ease;
+  opacity: 0.15;
+  filter: blur(120px);
 }
 
 /* GLOW ON HOVER */
@@ -691,15 +665,12 @@ Siste nytt kort - LIGHT MODE
   background: linear-gradient(
     to bottom right,
     rgba(250, 244, 244, 0.98),
-    rgba(236, 242, 255, 0.95),
-    rgb(255, 59, 203)
+    rgba(249, 251, 255, 0.95),
+    rgb(255, 226, 247)
   );
 
-  border: 2px solid rgb(243, 244, 246);
+  border: 2px solid rgb(255, 5, 209);
   border-radius: 14px;
-
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
 
   box-shadow: 0 18px 40px rgba(50, 69, 140, 0),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -713,10 +684,10 @@ Siste nytt kort - LIGHT MODE
 [data-theme="light"] .gotw-card:hover {
   transform: translateY(-6px) scale(1.02);
 
-  box-shadow: 0 22px 50px rgba(180, 60, 158, 0.25),
+  box-shadow: 0 2px 5px rgba(180, 60, 158, 0.25),
     0 0 20px rgba(255, 120, 251, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.9);
 
-  border-color: rgba(255, 120, 221, 0.9);
+  border-color: rgba(242, 12, 185, 0.9);
 }
 
 /* BADGE TITLE */
@@ -726,13 +697,13 @@ Siste nytt kort - LIGHT MODE
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
-  text-shadow: 0 2px 4px rgba(19, 3, 16, 0.56),
-    0 0 10px rgba(255, 120, 208, 0.35);
+  text-shadow: 0 2px 2px rgba(19, 3, 16, 0.56),
+    0 0 5px rgba(255, 120, 208, 0.35);
 }
 
 /* GAME TITLE */
 [data-theme="light"] .gotw-content h3 {
-  background: linear-gradient(90deg, #ff00a6, #ff00b7);
+  background: linear-gradient(90deg, #009597, #ff00b7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -1002,17 +973,17 @@ Siste nytt kort - LIGHT MODE
 [data-theme="light"] .double-card {
   background: linear-gradient(
     to bottom right,
-    rgba(248, 245, 255, 0.95),
-    rgba(238, 245, 255, 0.95),
-    rgba(255, 190, 240, 0.75)
+    rgba(253, 253, 253, 0.95),
+    rgba(255, 255, 255, 0.95),
+    rgb(251, 210, 233)
   );
 
-  border: 2px solid rgba(240, 240, 245, 0.9);
+  border: 2px solid rgba(251, 2, 176, 0.999);
 
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
 
-  box-shadow: 0 18px 40px rgba(100, 80, 200, 0.08),
+  box-shadow: 0 8px 4px rgba(238, 237, 244, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
   transition: all 0.45s ease;
@@ -1023,50 +994,25 @@ Siste nytt kort - LIGHT MODE
 [data-theme="light"] .double-card:hover {
   transform: translateY(-6px) scale(1.02);
 
-  box-shadow: 0 22px 50px rgba(180, 60, 158, 0.25),
+  box-shadow: 0 2px 5px rgba(180, 60, 158, 0.25),
     0 0 20px rgba(255, 120, 251, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.9);
 
-  border-color: rgba(255, 120, 221, 0.9);
-}
-
-/* GLOW EFFECT */
-[data-theme="light"] .double-card::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-
-  background: radial-gradient(
-    circle at top left,
-    rgba(255, 100, 210, 0.4),
-    rgba(160, 190, 255, 0.35),
-    rgba(255, 255, 255, 0)
-  );
-
-  opacity: 0.5;
-  filter: blur(90px);
-  transition: all 0.8s ease;
-  z-index: 0;
-}
-
-[data-theme="light"] .double-card:hover::before {
-  opacity: 0.8;
-  filter: blur(110px);
-  transform: scale(1.1);
+  border-color: rgba(248, 3, 186, 0.9);
 }
 
 /* TITLES */
 [data-theme="light"] .double-card h3 {
-  color: #ff007a;
+  color: #0097dd;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
-  text-shadow: 0 2px 4px rgba(19, 3, 16, 0.3),
+  text-shadow: 0 2px 4px rgba(19, 3, 16, 0.195),
     0 0 12px rgba(255, 120, 208, 0.35);
 }
 
 [data-theme="light"] .soon-info h4,
 [data-theme="light"] .editors-pick h4 {
-  background: linear-gradient(90deg, #ff00a6, #b100ff);
+  background: linear-gradient(90deg, #00bbff, #c600af);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1083,7 +1029,7 @@ Siste nytt kort - LIGHT MODE
 }
 
 [data-theme="light"] .dot.active {
-  background: #ff1ecf;
+  background: #1e83ff;
   box-shadow: 0 0 12px rgba(255, 0, 186, 0.65);
 }
 
@@ -1206,14 +1152,14 @@ Siste nytt kort - LIGHT MODE
     to bottom right,
     rgba(252, 1, 1, 0),
     rgb(255, 255, 255),
-    rgb(255, 139, 216)
+    rgba(246, 225, 239, 0.929)
   );
-  border: 2px solid rgba(255, 255, 255, 0);
+  border: 2px solid rgba(225, 3, 99, 0.832);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(245, 6, 149, 0.56);
+  box-shadow: 0 2px 5px rgba(245, 6, 149, 0.014);
   transition: all 0.3s ease;
   transform: translateY(0);
 }
@@ -1221,7 +1167,7 @@ Siste nytt kort - LIGHT MODE
 [data-theme="light"] .game-card:hover {
   transform: translateY(-5px) scale(1.03);
   box-shadow: 0 0 15px rgba(245, 1, 172, 0), 0 0 10px rgba(161, 2, 68, 0);
-  border-color: rgba(253, 248, 250, 0.93);
+  border-color: rgba(240, 0, 96, 0.93);
 }
 
 [data-theme="light"] .game-card img {
@@ -1234,7 +1180,7 @@ Siste nytt kort - LIGHT MODE
 }
 
 [data-theme="light"] .game-card h2 {
-  background: linear-gradient(90deg, #f90160, #f9019e);
+  background: linear-gradient(90deg, #0196f9, #ab016d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
@@ -1274,7 +1220,7 @@ Siste nytt kort - LIGHT MODE
   border: 2px solid white;
 }
 .load-more-container button {
-  background: linear-gradient(90deg, #ff007f, #ff00d0, #ff00ff);
+  background: linear-gradient(90deg, #ff4da6, #f600c9, #ff00aa);
   color: white;
   padding: 12px 25px;
   border: none;
