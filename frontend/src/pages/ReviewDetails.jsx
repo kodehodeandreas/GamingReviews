@@ -11,11 +11,35 @@ const withBase = (path) => {
   return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 };
 
+const timeAgo = (dateString) => {
+  const now = new Date();
+  const past = new Date(dateString);
+  const seconds = Math.floor((now - past) / 1000);
+
+  if (seconds < 60) return "akkurat nå";
+
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60)
+    return `for ${minutes} minutt${minutes > 1 ? "er" : ""} siden`;
+
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `for ${hours} time${hours > 1 ? "r" : ""} siden`;
+
+  const days = Math.floor(hours / 24);
+  if (days === 1) return "i går";
+  if (days < 7) return `for ${days} dager siden`;
+
+  return past.toLocaleDateString("no-NO");
+};
+
 function ReviewDetails() {
   const { id } = useParams();
   const [review, setReview] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [author, setAuthor] = useState("");
+  const [commentText, setCommentText] = useState("");
+  const [commentLoading, setCommentLoading] = useState(false);
 
   useEffect(() => {
     if (!selectedImage || !review?.galleryImages?.length) return;
@@ -61,6 +85,38 @@ function ReviewDetails() {
         setLoading(false);
       });
   }, [id]);
+
+  const handleSubmitComment = async (e) => {
+    e.preventDefault();
+
+    if (!author.trim() || !commentText.trim()) {
+      alert("Navn og kommentar må fylles ut");
+      return;
+    }
+
+    try {
+      setCommentLoading(true);
+
+      const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+      const res = await axios.post(`${API}/api/reviews/${id}/comments`, {
+        author,
+        text: commentText,
+      });
+
+      // Backend returnerer oppdatert review
+      setReview(res.data);
+
+      // Reset form
+      setAuthor("");
+      setCommentText("");
+    } catch (err) {
+      console.error("Feil ved posting av kommentar:", err);
+      alert("Kunne ikke legge til kommentar");
+    } finally {
+      setCommentLoading(false);
+    }
+  };
 
   if (loading) return <p className="loading">Laster anmeldelse...</p>;
   if (!review) return <p className="error">Fant ikke anmeldelsen.</p>;
@@ -284,6 +340,59 @@ function ReviewDetails() {
           )}
         </div>
       )}
+
+      {/* === KOMMENTARER === */}
+      <div className="comments-section">
+        <h2>Kommentarer</h2>
+
+        <form className="comment-form" onSubmit={handleSubmitComment}>
+          <input
+            type="text"
+            placeholder="Navn"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+            required
+          />
+
+          <textarea
+            placeholder="Skriv en kommentar..."
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+            rows={3}
+            required
+          />
+
+          <button type="submit" disabled={commentLoading}>
+            {commentLoading ? "Sender..." : "Legg til kommentar"}
+          </button>
+        </form>
+
+        {!review.comments || review.comments.length === 0 ? (
+          <p className="no-comments">Ingen kommentarer enda.</p>
+        ) : (
+          <ul className="comments-list">
+            {review.comments.map((comment) => (
+              <li
+                key={comment._id}
+                className={`comment-item ${comment.isAdmin ? "admin" : ""}`}
+              >
+                <div className="comment-header">
+                  <strong className="comment-author">
+                    {comment.author}
+                    {comment.isAdmin && (
+                      <span className="admin-badge">ADMIN</span>
+                    )}
+                  </strong>
+
+                  <span className="comment-date">{timeAgo(comment.date)}</span>
+                </div>
+
+                <p className="comment-text">{comment.text}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
 
       {/* === TILBAKEKNAPP === */}
       <div className="back-btn-container">

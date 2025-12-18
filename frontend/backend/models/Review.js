@@ -72,6 +72,21 @@ const reviewSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+
+  comments: {
+    type: [
+      {
+        author: { type: String, required: true },
+        text: { type: String, required: true },
+        isAdmin: {
+          type: Boolean,
+          default: false,
+        },
+        date: { type: Date, default: Date.now },
+      },
+    ],
+    default: [],
+  },
 });
 
 export default mongoose.model("Review", reviewSchema);

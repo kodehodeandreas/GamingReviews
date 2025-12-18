@@ -912,3 +912,151 @@ footer {
   background: linear-gradient(90deg, #ec0176, #0266f2);
   box-shadow: 0 0 25px rgba(0, 81, 255, 0.4);
 }
+/*-------------------------------------------
+COMMENTS
+---------------------------------------------*/
+.comments-section {
+  margin: 4rem auto 0;
+  padding-top: 2.5rem;
+
+  max-width: 680px;
+  width: 100%;
+
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+}
+
+.comments-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  height: 2px;
+  width: 95%;
+  max-width: 900px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-color),
+    transparent
+  );
+
+  opacity: 0.7;
+}
+
+.comments-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+/* === Comment form === */
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.comment-form input,
+.comment-form textarea {
+  padding: 0.75rem;
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.comment-form input:focus,
+.comment-form textarea:focus {
+  outline: none;
+  border-color: #ff7b00;
+}
+
+.comment-form button {
+  align-self: flex-start;
+  padding: 0.6rem 1.2rem;
+  background: #00aaff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.comment-form button:hover {
+  background: #e800be;
+}
+
+.comment-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* === Comment list === */
+.comments-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-item {
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1rem;
+  background: #f7f7f7;
+  border-radius: 8px;
+}
+
+/* Header row */
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: rgb(86, 0, 71);
+}
+
+.comment-date {
+  color: #999;
+  font-size: 0.7rem;
+  font-style: italic;
+}
+
+/* Text */
+.comment-text {
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  line-height: 1.5;
+  color: rgb(29, 29, 29);
+}
+
+/* No comments text */
+.no-comments {
+  font-style: italic;
+  color: #5e5e5e;
+}
+
+/* Admin comment */
+.comment-item.admin {
+  background: #fff4e8;
+  border-left: 4px solid #ff7b00;
+}
+
+.admin-badge {
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  background: #ff7b00;
+  color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+}

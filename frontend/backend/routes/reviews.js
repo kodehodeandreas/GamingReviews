@@ -7,7 +7,7 @@ const router = express.Router();
    ✅ SPESIALRUTER FØRST
 ============================================================ */
 
-// Hent siste 6 (nyheter + anmeldelser + gotw)
+// Hent siste 6
 router.get("/latest", async (req, res) => {
   try {
     const reviews = await Review.find().sort({ date: -1 }).limit(6);
@@ -22,9 +22,7 @@ router.get("/latest", async (req, res) => {
 router.get("/gotw", async (req, res) => {
   try {
     const gotw = await Review.findOne({ type: "gotw" }).sort({ date: -1 });
-
     if (!gotw) return res.status(404).json({ message: "Ingen GOTW funnet" });
-
     res.json(gotw);
   } catch (err) {
     console.error("FEIL /gotw:", err);
@@ -73,7 +71,6 @@ router.post("/", async (req, res) => {
 
     const review = new Review(req.body);
     const savedReview = await review.save();
-
     res.json(savedReview);
   } catch (err) {
     console.error("FEIL POST /:", err);
@@ -104,7 +101,62 @@ router.get("/", async (req, res) => {
 });
 
 /* ============================================================
-   ✅ HENT ENKEL REVIEW (MÅ LIGGE SIST)
+   ✅ LEGG TIL KOMMENTAR (MÅ LIGGE FØR /:id)
+============================================================ */
+
+router.post("/:id/comments", async (req, res) => {
+  try {
+    const { author, text, isAdmin } = req.body;
+
+    if (!author || !text) {
+      return res.status(400).json({ message: "Forfatter og tekst er påkrevd" });
+    }
+
+    const review = await Review.findById(req.params.id);
+    if (!review) {
+      return res.status(404).json({ message: "Review ikke funnet" });
+    }
+
+    review.comments.push({ author, text, isAdmin: isAdmin === true });
+    await review.save();
+
+    res.json(review);
+  } catch (err) {
+    console.error("FEIL POST /:id/comments:", err);
+    res.status(500).json({ message: "Kunne ikke legge til kommentar" });
+  }
+});
+
+/* ============================================================
+   ✅ SLETT KOMMENTAR
+============================================================ */
+
+router.delete("/:reviewId/comments/:commentId", async (req, res) => {
+  try {
+    const { reviewId, commentId } = req.params;
+
+    const review = await Review.findById(reviewId);
+    if (!review) {
+      return res.status(404).json({ message: "Review ikke funnet" });
+    }
+
+    const comment = review.comments.id(commentId);
+    if (!comment) {
+      return res.status(404).json({ message: "Kommentar ikke funnet" });
+    }
+
+    comment.deleteOne();
+    await review.save();
+
+    res.json(review);
+  } catch (err) {
+    console.error("FEIL DELETE kommentar:", err);
+    res.status(500).json({ message: "Kunne ikke slette kommentar" });
+  }
+});
+
+/* ============================================================
+   ✅ HENT ENKEL REVIEW
 ============================================================ */
 
 router.get("/:id", async (req, res) => {
