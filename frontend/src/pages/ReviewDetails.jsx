@@ -6,6 +6,11 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import "./ReviewDetails.css";
 
+// Midlertidig admin-sjekk (frontend-only)
+const isAdmin =
+  import.meta.env.VITE_IS_ADMIN === "true" ||
+  localStorage.getItem("isAdmin") === "true";
+
 const withBase = (path) => {
   if (!path) return "";
   return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
@@ -115,6 +120,24 @@ function ReviewDetails() {
       alert("Kunne ikke legge til kommentar");
     } finally {
       setCommentLoading(false);
+    }
+  };
+
+  const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+  const handleDeleteComment = async (commentId) => {
+    if (!window.confirm("Vil du slette denne kommentaren?")) return;
+
+    try {
+      const res = await axios.delete(
+        `${API}/api/reviews/${review._id}/comments/${commentId}`
+      );
+
+      // Oppdater review lokalt etter sletting
+      setReview(res.data);
+    } catch (err) {
+      console.error("Feil ved sletting av kommentar:", err);
+      alert("Kunne ikke slette kommentaren");
     }
   };
 
@@ -384,7 +407,21 @@ function ReviewDetails() {
                     )}
                   </strong>
 
-                  <span className="comment-date">{timeAgo(comment.date)}</span>
+                  <div className="comment-meta">
+                    <span className="comment-date">
+                      {timeAgo(comment.date)}
+                    </span>
+
+                    {isAdmin && (
+                      <button
+                        className="comment-delete"
+                        onClick={() => handleDeleteComment(comment._id)}
+                        title="Slett kommentar"
+                      >
+                        ✕
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 <p className="comment-text">{comment.text}</p>

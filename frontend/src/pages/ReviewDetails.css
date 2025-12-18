@@ -1060,3 +1060,22 @@ COMMENTS
   border-radius: 4px;
   text-transform: uppercase;
 }
+
+.comment-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.comment-delete {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+.comment-delete:hover {
+  color: #d00000;
+}
