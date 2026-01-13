@@ -105,6 +105,11 @@ Dette prosjektet er laget med fokus på:
 
 ![Gallery](screenshots/admin.png)
 
+### Demo/GIF
+
+![Home](screenshots/hometoadmin.gif)
+![Review](screenshots/reviewdemo.gif)
+
 ---
 
 ## Videre arbeid (planlagt)
