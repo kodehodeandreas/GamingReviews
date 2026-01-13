@@ -3,16 +3,14 @@
 GameReviews er en fullstack webapplikasjon for spillanmeldelser og nyheter.  
 Prosjektet er bygget som en moderne SPA med React i frontend og Node.js + MongoDB i backend.
 
+![Home](screenshots/hometoadmin.gif)
+
 Målet med prosjektet har vært å bygge en realistisk, produksjonsnær løsning som kombinerer:
 
 - API-integrasjoner
 - dynamisk innhold
 - admin-funksjonalitet
 - moderne UI/UX
-
-Dette prosjektet brukes som del av min personlige portefølje.
-
----
 
 ## Funksjoner
 
@@ -22,6 +20,7 @@ Dette prosjektet brukes som del av min personlige portefølje.
 - Markdown-støtte for rikt innhold (bilder, video, seksjoner)
 - Editor’s Pick-markering
 - Publiseringsdato og plattformer
+  ![Review](screenshots/reviewdemo.gif)
 
 ### Kommentarer
 
@@ -88,13 +87,17 @@ Dette prosjektet er laget med fokus på:
 ### Forside
 
 ![Forside](screenshots/home.png)
+
 ![Forside](screenshots/gameoftheweek.png)
+
 ![Forside](screenshots/comingsoon.png)
+
 ![Forside](screenshots/allgames.png)
 
 ### Anmeldelse
 
 ![Review](screenshots/review1.png)
+
 ![Review](screenshots/review2.png)
 
 ### Kommentarer
@@ -105,12 +108,7 @@ Dette prosjektet er laget med fokus på:
 
 ![Gallery](screenshots/admin.png)
 
-### Demo/GIF
-
-![Home](screenshots/hometoadmin.gif)
-![Review](screenshots/reviewdemo.gif)
-
----
+---git
 
 ## Videre arbeid (planlagt)
 
