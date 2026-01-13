@@ -23,6 +23,8 @@ Målet med prosjektet har vært å bygge en realistisk, produksjonsnær løsning
 
 ![Review](screenshots/reviewdemo.gif)
 
+---
+
 ### Kommentarer
 
 - Brukere kan legge igjen kommentarer på anmeldelser og nyheter
@@ -31,6 +33,8 @@ Målet med prosjektet har vært å bygge en realistisk, produksjonsnær løsning
 - Admin kan slette kommentarer
 
 ![Comments](screenshots/comments.png)
+
+---
 
 ### Media & presentasjon
 
@@ -41,6 +45,8 @@ Målet med prosjektet har vært å bygge en realistisk, produksjonsnær løsning
 
 ![Forside](screenshots/home.png)
 
+---
+
 ### Spilldata
 
 - Integrasjon mot RAWG API for spilloversikt
@@ -48,6 +54,8 @@ Målet med prosjektet har vært å bygge en realistisk, produksjonsnær løsning
 - “Coming Soon”-seksjon med automatisk rotasjon
 
 ![Alle spill](screenshots/allgames.png)
+
+---
 
 ## Admin
 
@@ -96,11 +104,19 @@ Dette prosjektet er laget med fokus på:
 
 ### Screenshots
 
+---
+
 ![Forside](screenshots/gameoftheweek.png)
+
+---
 
 ![Review](screenshots/review1.png)
 
+---
+
 ![Review](screenshots/review2.png)
+
+---
 
 ## Videre arbeid (planlagt)
 
