@@ -12,7 +12,7 @@ Målet med prosjektet har vært å bygge en realistisk, produksjonsnær løsning
 
 ![Home](screenshots/hometoadmin.gif)
 
-## Funksjoner
+---
 
 ### Innhold
 
@@ -30,6 +30,8 @@ Målet med prosjektet har vært å bygge en realistisk, produksjonsnær løsning
 - Admin-kommentarer merkes tydelig
 - Admin kan slette kommentarer
 
+![Comments](screenshots/comments.png)
+
 ### Media & presentasjon
 
 - Bildegalleri med modal-visning
@@ -37,15 +39,26 @@ Målet med prosjektet har vært å bygge en realistisk, produksjonsnær løsning
 - Platform-ikoner (PlayStation, PC, Xbox, Nintendo)
 - Responsive layouts
 
+![Forside](screenshots/home.png)
+
 ### Spilldata
 
 - Integrasjon mot RAWG API for spilloversikt
 - Søk og paginering
 - “Coming Soon”-seksjon med automatisk rotasjon
 
----
+![Alle spill](screenshots/allgames.png)
 
-## Tech Stack
+## Admin
+
+- Log in
+- Legge til nytt Review/Nyhetsak
+- Redigere Review/Nyhetsak
+- Slette Review/Nyhetsak
+
+![Admin](screenshots/admin.png)
+
+---
 
 ### Frontend
 
@@ -81,37 +94,13 @@ Dette prosjektet er laget med fokus på:
 - Feilhåndtering og edge cases
 - Vedlikeholdbar kode fremfor raske hacks
 
----
-
-## Screenshots
-
-### Forside
-
-![Forside](screenshots/home.png)
-
-### GOTW
+### Screenshots
 
 ![Forside](screenshots/gameoftheweek.png)
-
-### Alle spill
-
-![Forside](screenshots/allgames.png)
-
-### Anmeldelse
 
 ![Review](screenshots/review1.png)
 
 ![Review](screenshots/review2.png)
-
-### Kommentarer
-
-![Comments](screenshots/comments.png)
-
-### Admin
-
-![Gallery](screenshots/admin.png)
-
----git
 
 ## Videre arbeid (planlagt)
 
