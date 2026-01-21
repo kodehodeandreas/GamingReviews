@@ -25,7 +25,8 @@ function Home() {
   const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   const [games, setGames] = useState([]);
-  const [latestPosts, setLatestPosts] = useState([]); // beholdes, men brukes ikke til rendering av toppseksjonen nå
+  const [latestLoading, setLatestLoading] = useState(true);
+  const [latestPosts, setLatestPosts] = useState([]);
   const [allPosts, setAllPosts] = useState([]); // ✅ NYTT: henter alle poster én gang
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -76,26 +77,19 @@ function Home() {
     fetchGames();
   }, []);
 
-  // (Beholdt) /latest – kan fortsatt være nyttig andre steder,
-  // men toppseksjonen rendrer nå fra allPosts for å sikre "fortsettelse".
-  useEffect(() => {
-    let ignore = false;
-    axios
-      .get("https://gamereviews-not4.onrender.com/api/reviews/latest")
-      .then((res) => {
-        if (!ignore) setLatestPosts(res.data);
-      })
-      .catch((err) => console.error("Kunne ikke hente poster:", err));
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
-  // ✅ NYTT: hent "alle" poster (stor limit for å få med alt)
+  /* ============================================================
+   ✅ POSTER: FRONTEND-ONLY "FORTSETTELSE"
+   - Henter alle poster én gang (stor limit)
+   - Bruker 6 første som "Siste Nytt"
+   - Resten går til feed
+============================================================ */
   useEffect(() => {
     let ignore = false;
 
+    // begge seksjoner viser "Laster..." mens vi henter
+    setLatestLoading(true);
     setFeedLoading(true);
+
     axios
       .get("https://gamereviews-not4.onrender.com/api/reviews?page=1&limit=500")
       .then((res) => {
@@ -106,7 +100,10 @@ function Home() {
       })
       .catch((err) => console.error("Kunne ikke hente alle poster:", err))
       .finally(() => {
-        if (!ignore) setFeedLoading(false);
+        if (!ignore) {
+          setLatestLoading(false);
+          setFeedLoading(false);
+        }
       });
 
     return () => {
@@ -114,20 +111,17 @@ function Home() {
     };
   }, []);
 
-  // ✅ NYTT: bygg topp-6 + feed fra allPosts
-  // - Toppen bruker 6 første
-  // - Feeden får resten (så det blir "fortsettelse")
+  // ✅ bygg topp-6 + feed fra allPosts (så det blir “fortsettelse”)
   useEffect(() => {
     if (!Array.isArray(allPosts)) return;
 
     const topSix = allPosts.slice(0, 6);
     const rest = allPosts.slice(6);
 
-    // Bruker samme state-navn som før for å ikke endre UI/CSS
     setLatestPosts(topSix);
     setFeedPosts(rest);
 
-    // Vi bruker ikke "Last inn flere" i denne varianten
+    // Ingen paging når vi henter alt én gang
     setFeedHasMore(false);
   }, [allPosts]);
 
@@ -199,10 +193,9 @@ function Home() {
     fetchGames(nextPage, searchTerm);
   };
 
-  // (Beholdt funksjon så du slipper å refaktorere mer)
-  // Men den vil ikke brukes når feedHasMore=false
+  // Beholdt for å unngå refaktorering, men brukes ikke når feedHasMore=false
   const loadMoreFeed = () => {
-    // ingen paging i frontend-only varianten
+    // ingen paging i denne frontend-only varianten
   };
 
   return (
@@ -242,7 +235,9 @@ function Home() {
 
           <h1 className="home-title">Siste Nytt</h1>
           <div className="latest-reviews-grid">
-            {latestPosts.length === 0 ? (
+            {latestLoading ? (
+              <p>Laster...</p>
+            ) : latestPosts.length === 0 ? (
               <p>Ingen poster enda</p>
             ) : (
               latestPosts.slice(0, 6).map((post) => (
