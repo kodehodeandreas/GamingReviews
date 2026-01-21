@@ -16,6 +16,11 @@ const reviewSchema = new mongoose.Schema({
     default: "",
   },
 
+  feedSummary: {
+    type: String,
+    deffault: "",
+  },
+
   content: {
     type: String,
     required: true,

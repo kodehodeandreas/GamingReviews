@@ -11,6 +11,7 @@ function AdminNewReview() {
 
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
+  const [feedSummary, setFeedSummary] = useState("");
   const [content, setContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [secondaryImageUrl, setSecondaryImageUrl] = useState("");
@@ -35,6 +36,7 @@ function AdminNewReview() {
           const r = res.data;
           setTitle(r.title);
           setSummary(r.summary || "");
+          setFeedSummary(r.feedSummary || "");
           setContent(r.content);
           setImageUrl(r.imageUrl || "");
           setSecondaryImageUrl(r.secondaryImageUrl || "");
@@ -65,6 +67,7 @@ function AdminNewReview() {
     const newReview = {
       title,
       summary,
+      feedSummary,
       content,
       imageUrl,
       secondaryImageUrl,
@@ -129,6 +132,14 @@ function AdminNewReview() {
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
           placeholder="Skriv en kort oppsummering..."
+          rows={2}
+        />
+
+        <label>Kort tekst til feed (valgfritt)</label>
+        <textarea
+          value={feedSummary}
+          onChange={(e) => setFeedSummary(e.target.value)}
+          placeholder="Kortere tekst som kun vises i 'Flere saker'-feeden..."
           rows={2}
         />
 

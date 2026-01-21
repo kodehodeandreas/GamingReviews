@@ -41,9 +41,12 @@ function AdminPanel() {
     const token = localStorage.getItem("token");
 
     axios
-      .get("https://gamereviews-not4.onrender.com/api/reviews", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .get(
+        "https://gamereviews-not4.onrender.com/api/reviews?page=1&limit=200",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((res) => {
         setReviews(res.data);
         setLoading(false);

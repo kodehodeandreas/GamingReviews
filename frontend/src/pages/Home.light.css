@@ -1,0 +1,330 @@
+[data-theme="light"] .home {
+  background: radial-gradient(
+      circle at top right,
+      rgba(255, 0, 170, 0.08),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(0, 170, 255, 0.08),
+      transparent 50%
+    ),
+    linear-gradient(to bottom, #ffffff, #fff6fb, #ffffff);
+
+  background-attachment: scroll; /* viktig */
+  transition: background 0.6s ease;
+}
+
+[data-theme="light"] .home-title {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+  margin-bottom: 30px;
+  margin-top: -30px;
+  background: linear-gradient(90deg, #ff078f, #00a0d0, #f802a2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(255, 0, 195, 0);
+}
+
+[data-theme="light"] .home-subtitle {
+  color: rgb(0, 150, 181);
+}
+
+[data-theme="light"] .latest-date {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  white-space: nowrap;
+  color: #0d0d0d;
+}
+
+/* ------------------------------------------
+Siste nytt kort - LIGHT MODE 
+---------------------------------------------*/
+[data-theme="light"] .review-card-horizontal {
+  background: linear-gradient(to bottom right, #ffffff, #ffedfcd3);
+  border: 2px solid rgba(242, 3, 178, 0.6);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  transition: all 0.4s ease;
+}
+
+/* HOVER */
+[data-theme="light"] .review-card-horizontal:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* IMAGE */
+[data-theme="light"] .review-card-horizontal img {
+  filter: brightness(1.02) contrast(1.15);
+}
+
+/* TITLE */
+[data-theme="light"] .review-card-content h3 {
+  background: linear-gradient(90deg, #019ae1, #b00098);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 2px 4px rgba(50, 80, 120, 0.15);
+}
+
+/* TEXT */
+[data-theme="light"] .review-card-content p {
+  color: #191919;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* BACKGROUND LIGHT GLOW */
+[data-theme="light"] .review-card-horizontal::before {
+  opacity: 0.15;
+  filter: blur(120px);
+}
+
+/* GLOW ON HOVER */
+[data-theme="light"] .review-card-horizontal:hover::before {
+  opacity: 0.85;
+  filter: blur(90px);
+  transform: scale(1.08);
+}
+
+/* =======================================
+   GAME OF THE WEEK — LIGHT MODE
+======================================= */
+
+[data-theme="light"] .gotw-date {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  white-space: nowrap;
+  color: black;
+}
+
+[data-theme="light"] .gotw-card {
+  background: linear-gradient(
+    to bottom right,
+    rgba(250, 244, 244, 0.98),
+    rgba(249, 251, 255, 0.95),
+    rgb(255, 226, 247)
+  );
+
+  border: 2px solid rgb(255, 5, 209);
+  border-radius: 6px;
+
+  box-shadow: 0 18px 40px rgba(50, 69, 140, 0),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  transition: all 0.45s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* HOVER */
+[data-theme="light"] .gotw-card:hover {
+  transform: translateY(-6px) scale(1.02);
+
+  box-shadow: 0 2px 5px rgba(180, 60, 158, 0.25),
+    0 0 20px rgba(255, 120, 251, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.9);
+
+  border-color: rgba(242, 12, 185, 0.9);
+}
+
+/* BADGE TITLE */
+[data-theme="light"] .gotw-content h2 {
+  color: #ff0000;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  text-shadow: 0 2px 2px rgba(19, 3, 16, 0.56),
+    0 0 5px rgba(255, 120, 208, 0.35);
+}
+
+/* GAME TITLE */
+[data-theme="light"] .gotw-content h3 {
+  background: linear-gradient(90deg, #009597, #ff00b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 3px 5px rgba(80, 120, 200, 0.2);
+}
+
+/* DESCRIPTION */
+[data-theme="light"] .gotw-content p {
+  color: #10141c;
+  font-weight: 400;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* FEATURE GLOW */
+[data-theme="light"] .gotw-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 110, 216, 0.45),
+    rgba(255, 130, 188, 0.25),
+    rgba(255, 255, 255, 0)
+  );
+
+  opacity: 0.5;
+  filter: blur(90px);
+  transition: all 0.8s ease;
+  z-index: 0;
+}
+
+/* GLOW ON HOVER */
+[data-theme="light"] .gotw-card:hover::before {
+  opacity: 0.85;
+  filter: blur(100px);
+  transform: scale(1.1);
+}
+
+/* LIGHT & DARK shared hover tweak */
+[data-theme="light"] .gotw-card:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* =======================================
+   COMING SOON & EDITOR'S PICK — LIGHT MODE
+======================================= */
+
+[data-theme="light"] .double-card {
+  background: linear-gradient(
+    to bottom right,
+    rgba(253, 253, 253, 0.95),
+    rgba(255, 255, 255, 0.95),
+    rgb(251, 210, 233)
+  );
+
+  border: 2px solid rgba(251, 2, 176, 0.999);
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  box-shadow: 0 8px 4px rgba(238, 237, 244, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  transition: all 0.45s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="light"] .double-card:hover {
+  transform: translateY(-6px) scale(1.02);
+
+  box-shadow: 0 2px 5px rgba(180, 60, 158, 0.25),
+    0 0 20px rgba(255, 120, 251, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.9);
+
+  border-color: rgba(248, 3, 186, 0.9);
+}
+
+/* TITLES */
+[data-theme="light"] .double-card h3 {
+  color: #0097dd;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  text-shadow: 0 2px 4px rgba(19, 3, 16, 0.195),
+    0 0 12px rgba(255, 120, 208, 0.35);
+}
+
+[data-theme="light"] .soon-info h4,
+[data-theme="light"] .editors-pick h4 {
+  background: linear-gradient(90deg, #00bbff, #c600af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* DESCRIPTION */
+[data-theme="light"] .double-card p,
+[data-theme="light"] .double-card small {
+  color: #10141c;
+}
+
+/* DOTS */
+[data-theme="light"] .dot {
+  background: rgba(160, 160, 180, 0.5);
+}
+
+[data-theme="light"] .dot.active {
+  background: #1e83ff;
+  box-shadow: 0 0 12px rgba(255, 0, 186, 0.65);
+}
+
+/*LIGHTMODE*/
+[data-theme="light"] .game-card {
+  background: linear-gradient(
+    to bottom right,
+    rgba(252, 1, 1, 0),
+    rgb(255, 255, 255),
+    rgba(246, 225, 239, 0.929)
+  );
+  border: 2px solid rgba(225, 3, 99, 0.832);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(245, 6, 149, 0.014);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+[data-theme="light"] .game-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 0 15px rgba(245, 1, 172, 0), 0 0 10px rgba(161, 2, 68, 0);
+  border-color: rgba(240, 0, 96, 0.93);
+}
+
+[data-theme="light"] .game-card img {
+  filter: brightness(1.05) contrast(1.05);
+  transition: all 0.4s ease;
+}
+
+[data-theme="light"] .game-card:hover img {
+  filter: brightness(1.15) contrast(1.2);
+}
+
+[data-theme="light"] .game-card h2 {
+  background: linear-gradient(90deg, #0196f9, #ab016d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+[data-theme="light"] .game-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(
+    circle at top left,
+    rgba(212, 212, 212, 0),
+    rgba(190, 190, 190, 0),
+    transparent 80%
+  );
+  filter: blur(60px);
+  opacity: 0.5;
+  z-index: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-theme="light"] .game-card:hover::before {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+[data-theme="light"] .load-more-container button {
+  border: 2px solid white;
+}

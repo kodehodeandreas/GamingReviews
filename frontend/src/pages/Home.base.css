@@ -88,41 +88,6 @@
   transform: scale(1.12);
 }
 
-[data-theme="dark"] .home {
-  background: radial-gradient(
-      circle at top right,
-      rgba(255, 0, 153, 0.658),
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at bottom left,
-      rgba(0, 247, 255, 0.64),
-      transparent 50%
-    ),
-    linear-gradient(to bottom, #38012c93 0%, #150d1f 80%, #0b0811 100%);
-  background-attachment: fixed;
-  border-radius: 0px;
-  box-shadow: 0 0 50px rgba(255, 0, 255, 0.08);
-  transition: background 0.6s ease;
-}
-
-[data-theme="light"] .home {
-  background: radial-gradient(
-      circle at top right,
-      rgba(255, 0, 170, 0.08),
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at bottom left,
-      rgba(0, 170, 255, 0.08),
-      transparent 50%
-    ),
-    linear-gradient(to bottom, #ffffff, #fff6fb, #ffffff);
-
-  background-attachment: scroll; /* viktig */
-  transition: background 0.6s ease;
-}
-
 /* === TITLER === */
 .home-title {
   text-align: center;
@@ -133,20 +98,6 @@
   margin-bottom: 30px;
   margin-top: -30px;
   background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 5px rgba(255, 0, 195, 0);
-}
-
-[data-theme="light"] .home-title {
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  line-height: 1.7;
-  letter-spacing: 0.2px;
-  margin-bottom: 30px;
-  margin-top: -30px;
-  background: linear-gradient(90deg, #ff078f, #00a0d0, #f802a2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 5px rgba(255, 0, 195, 0);
@@ -163,14 +114,10 @@
   text-shadow: 0 0 10px rgba(255, 123, 0, 0);
 }
 
-[data-theme="light"] .home-subtitle {
-  color: rgb(0, 150, 181);
-}
-
 /* === SISTE ANMELDELSER OG NYHETER=== */
 .latest-reviews {
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 6px;
   margin-bottom: 10px;
 }
 
@@ -203,7 +150,7 @@
 
 .review-card-horizontal {
   display: flex;
-  border-radius: 12px;
+  border-radius: 6px;
   overflow: hidden;
   text-decoration: none;
   color: rgb(255, 255, 255);
@@ -313,123 +260,6 @@
   letter-spacing: 0.2px;
 }
 
-/*------------------------------------------
- Siste nytt kort — DARK MODE
- -------------------------------------------*/
-[data-theme="dark"] .review-card-horizontal {
-  background: rgba(35, 0, 28, 0.75);
-  border: 1px solid rgba(255, 0, 200, 0.707);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(255, 0, 212, 0.379);
-  transition: all 0.4s ease;
-}
-
-[data-theme="dark"] .review-card-horizontal:hover {
-  transform: translateY(-7px) scale(1.01);
-  box-shadow: 0 0 8px rgba(0, 213, 255, 0.616),
-    inset 0 0 8px rgba(63, 176, 241, 0.453);
-  border-color: rgba(255, 0, 200, 0.5);
-}
-
-[data-theme="dark"] .review-card-horizontal img {
-  filter: brightness(0.9) contrast(1.05);
-}
-
-[data-theme="dark"] .review-card-content h3 {
-  color: var(--accent-color);
-  background: rgb(0, 179, 224); /*farge på h3*/
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-[data-theme="dark"] .review-card-content p {
-  color: #eaeaea;
-  text-shadow: 0 0 5px rgba(255, 0, 255, 0.1);
-}
-
-[data-theme="dark"] .review-card-horizontal::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -40%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at bottom right,
-    rgba(0, 234, 255, 0.347),
-    rgba(0, 125, 125, 0),
-    rgb(242, 0, 255)
-  );
-  filter: blur(60px);
-  opacity: 0.9;
-  z-index: 0;
-  transition: all 0.8s ease;
-}
-
-[data-theme="dark"] .review-card-horizontal:hover::before {
-  opacity: 0.9;
-  transform: scale(1.05);
-  filter: blur(70px);
-}
-
-/* ------------------------------------------
-Siste nytt kort - LIGHT MODE 
----------------------------------------------*/
-[data-theme="light"] .review-card-horizontal {
-  background: linear-gradient(to bottom right, #ffffff, #ffedfcd3);
-  border: 2px solid rgba(242, 3, 178, 0.6);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08),
-    0 1px 0 rgba(255, 255, 255, 0.8) inset;
-  transition: all 0.4s ease;
-}
-
-/* HOVER */
-[data-theme="light"] .review-card-horizontal:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-}
-
-/* IMAGE */
-[data-theme="light"] .review-card-horizontal img {
-  filter: brightness(1.02) contrast(1.15);
-}
-
-/* TITLE */
-[data-theme="light"] .review-card-content h3 {
-  background: linear-gradient(90deg, #019ae1, #b00098);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: 0 2px 4px rgba(50, 80, 120, 0.15);
-}
-
-/* TEXT */
-[data-theme="light"] .review-card-content p {
-  color: #191919;
-  font-weight: 400;
-  line-height: 1.6;
-}
-
-/* BACKGROUND LIGHT GLOW */
-[data-theme="light"] .review-card-horizontal::before {
-  opacity: 0.15;
-  filter: blur(120px);
-}
-
-/* GLOW ON HOVER */
-[data-theme="light"] .review-card-horizontal:hover::before {
-  opacity: 0.85;
-  filter: blur(90px);
-  transform: scale(1.08);
-}
-
 /* === Latest review: meta row (Nyhet/Anmeldelse/GOTW + ikoner) === */
 .meta-row {
   display: none; /*SKJULT*/
@@ -482,13 +312,6 @@ Siste nytt kort - LIGHT MODE
   white-space: nowrap;
 }
 
-[data-theme="light"] .latest-date {
-  font-size: 0.75rem;
-  opacity: 0.9;
-  white-space: nowrap;
-  color: #0d0d0d;
-}
-
 .platform-icon-row {
   display: flex;
   gap: 10px;
@@ -526,7 +349,7 @@ Siste nytt kort - LIGHT MODE
   display: flex;
   background: rgba(40, 0, 30, 0.6);
   border: 1px solid rgba(255, 0, 200, 0.4);
-  border-radius: 16px;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 0 18px rgba(255, 0, 0, 0.577);
   backdrop-filter: blur(12px) saturate(150%);
@@ -564,13 +387,6 @@ Siste nytt kort - LIGHT MODE
   font-size: 0.8rem;
   opacity: 0.7;
   white-space: nowrap;
-}
-
-[data-theme="light"] .gotw-date {
-  font-size: 0.8rem;
-  opacity: 0.9;
-  white-space: nowrap;
-  color: black;
 }
 
 .gotw-image {
@@ -623,131 +439,6 @@ Siste nytt kort - LIGHT MODE
 
 .gotw-readmore:hover {
   text-decoration: underline;
-}
-
-/* =======================================
-   GAME OF THE WEEK — DARK MODE
-======================================= */
-[data-theme="dark"] .gotw-card {
-  background: rgba(35, 0, 28, 0.75);
-  border: 1px solid rgba(255, 0, 200, 0.55);
-  box-shadow: 0 0 22px rgba(255, 0, 255, 0.25),
-    inset 0 0 12px rgba(255, 0, 208, 0.836);
-}
-
-[data-theme="dark"] .gotw-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 12px rgba(0, 183, 255, 0.505),
-    inset 0 0 12px rgba(255, 0, 208, 0.836);
-}
-
-[data-theme="dark"] .gotw-content h2 {
-  color: #fc0404;
-  text-shadow: 0 0 8px rgba(7, 0, 7, 0.25);
-}
-
-[data-theme="dark"] .gotw-content h3 {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-[data-theme="dark"] .gotw-content p {
-  color: #e8e8e8;
-  opacity: 0.95;
-}
-
-/* =======================================
-   GAME OF THE WEEK — LIGHT MODE
-======================================= */
-
-[data-theme="light"] .gotw-card {
-  background: linear-gradient(
-    to bottom right,
-    rgba(250, 244, 244, 0.98),
-    rgba(249, 251, 255, 0.95),
-    rgb(255, 226, 247)
-  );
-
-  border: 2px solid rgb(255, 5, 209);
-  border-radius: 14px;
-
-  box-shadow: 0 18px 40px rgba(50, 69, 140, 0),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-
-  transition: all 0.45s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* HOVER */
-[data-theme="light"] .gotw-card:hover {
-  transform: translateY(-6px) scale(1.02);
-
-  box-shadow: 0 2px 5px rgba(180, 60, 158, 0.25),
-    0 0 20px rgba(255, 120, 251, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.9);
-
-  border-color: rgba(242, 12, 185, 0.9);
-}
-
-/* BADGE TITLE */
-[data-theme="light"] .gotw-content h2 {
-  color: #ff0000;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-
-  text-shadow: 0 2px 2px rgba(19, 3, 16, 0.56),
-    0 0 5px rgba(255, 120, 208, 0.35);
-}
-
-/* GAME TITLE */
-[data-theme="light"] .gotw-content h3 {
-  background: linear-gradient(90deg, #009597, #ff00b7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: 0 3px 5px rgba(80, 120, 200, 0.2);
-}
-
-/* DESCRIPTION */
-[data-theme="light"] .gotw-content p {
-  color: #10141c;
-  font-weight: 400;
-  line-height: 1.6;
-  opacity: 0.95;
-}
-
-/* FEATURE GLOW */
-[data-theme="light"] .gotw-card::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-
-  background: radial-gradient(
-    circle at top left,
-    rgba(255, 110, 216, 0.45),
-    rgba(255, 130, 188, 0.25),
-    rgba(255, 255, 255, 0)
-  );
-
-  opacity: 0.5;
-  filter: blur(90px);
-  transition: all 0.8s ease;
-  z-index: 0;
-}
-
-/* GLOW ON HOVER */
-[data-theme="light"] .gotw-card:hover::before {
-  opacity: 0.85;
-  filter: blur(100px);
-  transform: scale(1.1);
-}
-
-/* LIGHT & DARK shared hover tweak */
-[data-theme="dark"] .gotw-card:hover,
-[data-theme="light"] .gotw-card:hover {
-  transform: translateY(-4px) scale(1.02);
 }
 
 /* =======================================
@@ -916,121 +607,233 @@ Siste nytt kort - LIGHT MODE
   }
 }
 
-/* =======================================
-   COMING SOON & EDITOR'S PICK — DARK MODE
-======================================= */
+/* ===========================================
+   HOME FEED
+=========================================== */
 
-[data-theme="dark"] .double-card {
-  background: rgba(35, 0, 28, 0.75);
-  border: 1px solid rgba(255, 0, 200, 0.55);
-
-  box-shadow: 0 0 22px rgba(255, 0, 255, 0.25),
-    inset 0 0 12px rgba(255, 0, 208, 0.6);
-
-  transition: all 0.4s ease;
+.home-feed {
+  margin-top: 3rem;
+  max-width: 1000px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Inter", sans-serif;
 }
 
-[data-theme="dark"] .double-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 0 18px rgba(0, 183, 255, 0.5),
-    inset 0 0 12px rgba(255, 0, 208, 0.7);
+.home-feed-title {
+  /*Flere Saker*/
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* TITLES */
-[data-theme="dark"] .double-card h3 {
-  color: #00c7ac;
-  text-shadow: 0 0 10px rgba(255, 0, 200, 0.3);
+.home-feed-empty {
+  opacity: 0.8;
 }
 
-[data-theme="dark"] .soon-info h4,
-[data-theme="dark"] .editors-pick h4 {
-  background: linear-gradient(90deg, #ff00cc, #ff00b3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* 6-kolonne grid:
+   - små: 2 kolonner hver (3 på rad)
+   - store: 3 kolonner hver (2 på rad)
+*/
+.home-feed-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 18px;
 }
 
-/* DESCRIPTION */
-[data-theme="dark"] .double-card p,
-[data-theme="dark"] .double-card small {
-  color: #e4e4e4;
-  opacity: 0.95;
+.home-feed-item {
+  /* default: små kort */
+  grid-column: span 2;
 }
 
-/* DOTS */
-[data-theme="dark"] .dot {
-  background: rgba(255, 255, 255, 0.35);
+/* Andre rad: to store (item 4 og 5 i lista) */
+.home-feed-item:nth-child(4),
+.home-feed-item:nth-child(5) {
+  grid-column: span 3;
 }
 
-[data-theme="dark"] .dot.active {
-  background: #ff00d4;
-  box-shadow: 0 0 10px rgba(255, 0, 212, 0.75);
+/* Selve linken/kortet: flatt (ikke cardy) */
+.home-feed-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
-/* =======================================
-   COMING SOON & EDITOR'S PICK — LIGHT MODE
-======================================= */
+/* Bilde */
+.home-feed-thumb {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 2px; /* lite radius, ikke cardy */
+  background: rgba(255, 255, 255, 0.04);
+}
 
-[data-theme="light"] .double-card {
-  background: linear-gradient(
-    to bottom right,
-    rgba(253, 253, 253, 0.95),
-    rgba(255, 255, 255, 0.95),
-    rgb(251, 210, 233)
-  );
+.home-feed-thumb img {
+  width: 100%;
+  height: 160px; /* små kort */
+  object-fit: cover;
+  display: block;
+  transform: scale(1);
+  transition: transform 0.25s ease;
+}
 
-  border: 2px solid rgba(251, 2, 176, 0.999);
+/* Store kort får høyere bilde */
+.home-feed-item:nth-child(4) .home-feed-thumb img,
+.home-feed-item:nth-child(5) .home-feed-thumb img {
+  height: 230px;
+}
 
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
+.home-feed-link:hover .home-feed-thumb img {
+  transform: scale(1.02);
+}
 
-  box-shadow: 0 8px 4px rgba(238, 237, 244, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+/* Tekst under bildet */
+.home-feed-body {
+  padding-top: 10px;
+}
 
-  transition: all 0.45s ease;
-  position: relative;
+/* Top row: type + dato */
+.home-feed-toprow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 4px;
+}
+
+.home-feed-date {
+  font-size: 0.85rem;
+  font-family: "Montserrat", sans-serif;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+/* Badge (mer “flat”) */
+.home-feed-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 0.28rem 0.55rem;
+  border-radius: 6px; /* ikke pill */
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  background: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+
+/* Type farger (subtile) */
+.home-feed-badge.news {
+  background: rgba(0, 157, 255, 0);
+}
+
+.home-feed-badge.review {
+  background: rgba(255, 123, 0, 0);
+}
+
+.home-feed-badge.gotw {
+  background: rgba(255, 0, 0, 0.14);
+}
+
+/* Tittel */
+.home-feed-headline {
+  margin: 0 0 8px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-size: 1rem; /* små */
+  text-decoration: underline;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-[data-theme="light"] .double-card:hover {
-  transform: translateY(-6px) scale(1.02);
-
-  box-shadow: 0 2px 5px rgba(180, 60, 158, 0.25),
-    0 0 20px rgba(255, 120, 251, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.9);
-
-  border-color: rgba(248, 3, 186, 0.9);
+/* Store kort får større tittel */
+.home-feed-item:nth-child(4) .home-feed-headline,
+.home-feed-item:nth-child(5) .home-feed-headline {
+  font-size: 1.3rem;
+  -webkit-line-clamp: 3;
 }
 
-/* TITLES */
-[data-theme="light"] .double-card h3 {
-  color: #0097dd;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+/* Summary (tydelig tekst under bildet) */
+.home-feed-summary {
+  margin: 0;
+  opacity: 0.9;
+  line-height: 1.45;
+  font-size: 1.7rem;
+  font-weight: bolder;
 
-  text-shadow: 0 2px 4px rgba(19, 3, 16, 0.195),
-    0 0 12px rgba(255, 120, 208, 0.35);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-[data-theme="light"] .soon-info h4,
-[data-theme="light"] .editors-pick h4 {
-  background: linear-gradient(90deg, #00bbff, #c600af);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Store kort */
+.home-feed-item:nth-child(4) .home-feed-summary,
+.home-feed-item:nth-child(5) .home-feed-summary {
+  font-size: 2.3rem;
+  -webkit-line-clamp: 2;
 }
 
-/* DESCRIPTION */
-[data-theme="light"] .double-card p,
-[data-theme="light"] .double-card small {
-  color: #10141c;
+/* Platforms */
+.home-feed-platforms {
+  margin-top: 10px;
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
 }
 
-/* DOTS */
-[data-theme="light"] .dot {
-  background: rgba(160, 160, 180, 0.5);
+.home-feed-more {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
 }
 
-[data-theme="light"] .dot.active {
-  background: #1e83ff;
-  box-shadow: 0 0 12px rgba(255, 0, 186, 0.65);
+/* ===== Responsive ===== */
+@media (max-width: 1050px) {
+  /* 2 kolonner på nettbrett */
+  .home-feed-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-feed-item {
+    grid-column: span 1;
+  }
+
+  .home-feed-item:nth-child(4),
+  .home-feed-item:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .home-feed-thumb img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* 1 kolonne på mobil */
+  .home-feed-list {
+    grid-template-columns: 1fr;
+  }
+
+  .home-feed-item,
+  .home-feed-item:nth-child(4),
+  .home-feed-item:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .home-feed-thumb img {
+    height: 200px;
+  }
+
+  .home-feed-item:nth-child(4) .home-feed-thumb img,
+  .home-feed-item:nth-child(5) .home-feed-thumb img {
+    height: 220px;
+  }
 }
 
 /*-----------------------------------
@@ -1086,139 +889,12 @@ Siste nytt kort - LIGHT MODE
   color: #ff7b00;
   text-shadow: 0 0 10px rgba(255, 0, 191, 0.414);
 }
-/*DARKMODE*/
-[data-theme="dark"] .game-card {
-  background: rgb(20, 0, 10);
-  border: 1px solid rgb(255, 0, 200);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 0 5px rgba(255, 0, 255, 0.534);
-  transition: all 0.3s ease;
-  transform: translateY(0);
-}
-
-[data-theme="dark"] .game-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
-  border-color: rgba(255, 0, 200, 0.33);
-}
-
-[data-theme="dark"] .game-card img {
-  filter: brightness(0.9) contrast(1.2);
-  transition: all 0.4s ease;
-}
-
-[data-theme="dark"] .game-card:hover img {
-  filter: brightness(1) contrast(1.2);
-}
-
-[data-theme="dark"] .game-card h2 {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
-  text-shadow: 0 0 5px rgba(255, 0, 255, 0.2);
-}
-
-[data-theme="dark"] .game-card::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at bottom right,
-    rgb(255, 255, 255),
-    rgba(3, 174, 231, 0.468),
-    transparent 50%
-  );
-  filter: blur(80px);
-  opacity: 0.5;
-  z-index: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-[data-theme="dark"] .game-card:hover::before {
-  opacity: 0.8;
-  transform: scale(1.05);
-}
-
-/*LIGHTMODE*/
-[data-theme="light"] .game-card {
-  background: linear-gradient(
-    to bottom right,
-    rgba(252, 1, 1, 0),
-    rgb(255, 255, 255),
-    rgba(246, 225, 239, 0.929)
-  );
-  border: 2px solid rgba(225, 3, 99, 0.832);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(245, 6, 149, 0.014);
-  transition: all 0.3s ease;
-  transform: translateY(0);
-}
-
-[data-theme="light"] .game-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 0 15px rgba(245, 1, 172, 0), 0 0 10px rgba(161, 2, 68, 0);
-  border-color: rgba(240, 0, 96, 0.93);
-}
-
-[data-theme="light"] .game-card img {
-  filter: brightness(1.05) contrast(1.05);
-  transition: all 0.4s ease;
-}
-
-[data-theme="light"] .game-card:hover img {
-  filter: brightness(1.15) contrast(1.2);
-}
-
-[data-theme="light"] .game-card h2 {
-  background: linear-gradient(90deg, #0196f9, #ab016d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
-  font-weight: 600;
-}
-
-[data-theme="light"] .game-card::before {
-  content: "";
-  position: absolute;
-  top: -40%;
-  left: -40%;
-  width: 180%;
-  height: 180%;
-  background: radial-gradient(
-    circle at top left,
-    rgba(212, 212, 212, 0),
-    rgba(190, 190, 190, 0),
-    transparent 80%
-  );
-  filter: blur(60px);
-  opacity: 0.5;
-  z-index: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-[data-theme="light"] .game-card:hover::before {
-  opacity: 0.8;
-  transform: scale(1.05);
-}
 
 .load-more-container {
   text-align: center;
   margin: 30px 0;
 }
 
-[data-theme="light"] .load-more-container button {
-  border: 2px solid white;
-}
 .load-more-container button {
   background: linear-gradient(90deg, #ff4da6, #f600c9, #ff00aa);
   color: white;

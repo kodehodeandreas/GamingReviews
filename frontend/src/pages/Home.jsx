@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import axios from "axios";
-import "./Home.css";
+import "./Home.base.css";
+import "./Home.dark.css";
+import "./Home.light.css";
+
 import IconSidebar from "../components/IconSidebar";
 
 import psLogo from "../assets/platforms/playstation.png";
@@ -19,19 +22,32 @@ const platformIcons = {
 };
 
 function Home() {
+  const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   const [games, setGames] = useState([]);
-  const [latestPosts, setLatestPosts] = useState([]);
+  const [latestPosts, setLatestPosts] = useState([]); // beholdes, men brukes ikke til rendering av toppseksjonen nå
+  const [allPosts, setAllPosts] = useState([]); // ✅ NYTT: henter alle poster én gang
+
   const [searchTerm, setSearchTerm] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const location = useLocation();
+
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+
   const [gotw, setGotw] = useState(null);
   const [comingSoon, setComingSoon] = useState([]);
   const [currentSoon, setCurrentSoon] = useState(0);
   const [prevSoonIndex, setPrevSoonIndex] = useState(null);
   const [editorsPick, setEditorsPick] = useState(null);
+
+  // === FEED (avis-liste) ===
+  // ✅ behold samme state-navn slik at UI/CSS/className ikke påvirkes
+  // Men nå fylles den fra allPosts (ikke server-paging)
+  const [feedPosts, setFeedPosts] = useState([]);
+  const [feedLoading, setFeedLoading] = useState(false);
+  const [feedHasMore, setFeedHasMore] = useState(false); // ingen "last inn flere" når vi tar alt
 
   const fetchGames = async (pageNumber = 1, search = "") => {
     setLoading(true);
@@ -60,6 +76,8 @@ function Home() {
     fetchGames();
   }, []);
 
+  // (Beholdt) /latest – kan fortsatt være nyttig andre steder,
+  // men toppseksjonen rendrer nå fra allPosts for å sikre "fortsettelse".
   useEffect(() => {
     let ignore = false;
     axios
@@ -72,6 +90,46 @@ function Home() {
       ignore = true;
     };
   }, []);
+
+  // ✅ NYTT: hent "alle" poster (stor limit for å få med alt)
+  useEffect(() => {
+    let ignore = false;
+
+    setFeedLoading(true);
+    axios
+      .get("https://gamereviews-not4.onrender.com/api/reviews?page=1&limit=500")
+      .then((res) => {
+        if (ignore) return;
+
+        const data = Array.isArray(res.data) ? res.data : [];
+        setAllPosts(data);
+      })
+      .catch((err) => console.error("Kunne ikke hente alle poster:", err))
+      .finally(() => {
+        if (!ignore) setFeedLoading(false);
+      });
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  // ✅ NYTT: bygg topp-6 + feed fra allPosts
+  // - Toppen bruker 6 første
+  // - Feeden får resten (så det blir "fortsettelse")
+  useEffect(() => {
+    if (!Array.isArray(allPosts)) return;
+
+    const topSix = allPosts.slice(0, 6);
+    const rest = allPosts.slice(6);
+
+    // Bruker samme state-navn som før for å ikke endre UI/CSS
+    setLatestPosts(topSix);
+    setFeedPosts(rest);
+
+    // Vi bruker ikke "Last inn flere" i denne varianten
+    setFeedHasMore(false);
+  }, [allPosts]);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -121,7 +179,7 @@ function Home() {
     axios
       .get("https://gamereviews-not4.onrender.com/api/reviews/editors-pick")
       .then((res) => setEditorsPick(res.data))
-      .catch((err) => {
+      .catch(() => {
         console.log("Ingen Editors Pick satt");
         setEditorsPick(null);
       });
@@ -139,6 +197,12 @@ function Home() {
     const nextPage = page + 1;
     setPage(nextPage);
     fetchGames(nextPage, searchTerm);
+  };
+
+  // (Beholdt funksjon så du slipper å refaktorere mer)
+  // Men den vil ikke brukes når feedHasMore=false
+  const loadMoreFeed = () => {
+    // ingen paging i frontend-only varianten
   };
 
   return (
@@ -406,6 +470,93 @@ function Home() {
               </div>
             )}
           </div>
+
+          {/* === NYHETSSTRØM  === */}
+          <section className="home-feed">
+            <h2 className="home-feed-title">Flere saker</h2>
+
+            {feedPosts.length === 0 && feedLoading ? (
+              <p className="home-feed-empty">Laster flere saker...</p>
+            ) : feedPosts.length === 0 ? (
+              <p className="home-feed-empty">Ingen flere saker enda.</p>
+            ) : (
+              <ul className="home-feed-list">
+                {feedPosts.map((post) => (
+                  <li key={post._id} className="home-feed-item">
+                    <Link to={`/review/${post._id}`} className="home-feed-link">
+                      <div className="home-feed-thumb">
+                        <img
+                          src={`${import.meta.env.BASE_URL}${(
+                            post.imageUrl || ""
+                          ).replace(/^\/+/, "")}`}
+                          alt={post.title}
+                          loading="lazy"
+                        />
+                      </div>
+
+                      <div className="home-feed-body">
+                        <div className="home-feed-toprow">
+                          <span
+                            className={`home-feed-badge ${
+                              post.type === "gotw"
+                                ? "gotw"
+                                : post.type === "news"
+                                ? "news"
+                                : "review"
+                            }`}
+                          >
+                            {post.type === "gotw"
+                              ? "FEATURE"
+                              : post.type === "news"
+                              ? "NYHET"
+                              : "ANMELDELSE"}
+                          </span>
+
+                          <span className="home-feed-date">
+                            {new Date(post.date).toLocaleDateString("no-NO")}
+                          </span>
+                        </div>
+
+                        <h3 className="home-feed-headline">{post.title}</h3>
+
+                        {/* Bruk feedSummary (nytt felt) hvis det finnes, ellers summary, ellers content */}
+                        <p className="home-feed-summary">
+                          {post.feedSummary?.trim()
+                            ? post.feedSummary
+                            : post.summary?.trim()
+                            ? post.summary
+                            : post.content
+                            ? `${post.content.slice(0, 140)}...`
+                            : ""}
+                        </p>
+
+                        {post.platforms?.length > 0 && (
+                          <div className="home-feed-platforms">
+                            {post.platforms.map((p) => (
+                              <img
+                                key={p}
+                                src={platformIcons[p]}
+                                alt={p}
+                                className="platform-badge"
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {feedHasMore && (
+              <div className="home-feed-more">
+                <button onClick={loadMoreFeed} disabled={feedLoading}>
+                  {feedLoading ? "Laster..." : "Last inn flere"}
+                </button>
+              </div>
+            )}
+          </section>
 
           <h2 className="home-subtitle">Alle spill</h2>
 

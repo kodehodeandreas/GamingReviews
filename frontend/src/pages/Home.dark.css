@@ -1,0 +1,220 @@
+[data-theme="dark"] .home {
+  background: radial-gradient(
+      circle at top right,
+      rgba(255, 0, 153, 0.658),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(0, 247, 255, 0.64),
+      transparent 50%
+    ),
+    linear-gradient(to bottom, #38012c93 0%, #150d1f 80%, #0b0811 100%);
+  background-attachment: fixed;
+  border-radius: 0px;
+  box-shadow: 0 0 50px rgba(255, 0, 255, 0.08);
+  transition: background 0.6s ease;
+}
+
+/*------------------------------------------
+ Siste nytt kort — DARK MODE
+ -------------------------------------------*/
+[data-theme="dark"] .review-card-horizontal {
+  background: rgba(35, 0, 28, 0.75);
+  border: 1px solid rgba(255, 0, 200, 0.707);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 0, 212, 0.379);
+  transition: all 0.4s ease;
+}
+
+[data-theme="dark"] .review-card-horizontal:hover {
+  transform: translateY(-7px) scale(1.01);
+  box-shadow: 0 0 8px rgba(0, 213, 255, 0.616),
+    inset 0 0 8px rgba(63, 176, 241, 0.453);
+  border-color: rgba(255, 0, 200, 0.5);
+}
+
+[data-theme="dark"] .review-card-horizontal img {
+  filter: brightness(0.9) contrast(1.05);
+}
+
+[data-theme="dark"] .review-card-content h3 {
+  color: var(--accent-color);
+  background: rgb(0, 179, 224); /*farge på h3*/
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .review-card-content p {
+  color: #eaeaea;
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.1);
+}
+
+[data-theme="dark"] .review-card-horizontal::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -40%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at bottom right,
+    rgba(0, 234, 255, 0.347),
+    rgba(0, 125, 125, 0),
+    rgb(242, 0, 255)
+  );
+  filter: blur(60px);
+  opacity: 0.9;
+  z-index: 0;
+  transition: all 0.8s ease;
+}
+
+[data-theme="dark"] .review-card-horizontal:hover::before {
+  opacity: 0.9;
+  transform: scale(1.05);
+  filter: blur(70px);
+}
+
+/* =======================================
+   GAME OF THE WEEK — DARK MODE
+======================================= */
+[data-theme="dark"] .gotw-card {
+  background: rgba(35, 0, 28, 0.75);
+  border: 1px solid rgba(255, 0, 200, 0.55);
+  box-shadow: 0 0 22px rgba(255, 0, 255, 0.25),
+    inset 0 0 12px rgba(255, 0, 208, 0.836);
+}
+
+[data-theme="dark"] .gotw-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px rgba(0, 183, 255, 0.505),
+    inset 0 0 12px rgba(255, 0, 208, 0.836);
+}
+
+[data-theme="dark"] .gotw-content h2 {
+  color: #fc0404;
+  text-shadow: 0 0 8px rgba(7, 0, 7, 0.25);
+}
+
+[data-theme="dark"] .gotw-content h3 {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .gotw-content p {
+  color: #e8e8e8;
+  opacity: 0.95;
+}
+
+/* =======================================
+   COMING SOON & EDITOR'S PICK — DARK MODE
+======================================= */
+
+[data-theme="dark"] .double-card {
+  background: rgba(35, 0, 28, 0.75);
+  border: 1px solid rgba(255, 0, 200, 0.55);
+
+  box-shadow: 0 0 22px rgba(255, 0, 255, 0.25),
+    inset 0 0 12px rgba(255, 0, 208, 0.6);
+
+  transition: all 0.4s ease;
+}
+
+[data-theme="dark"] .double-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 0 18px rgba(0, 183, 255, 0.5),
+    inset 0 0 12px rgba(255, 0, 208, 0.7);
+}
+
+/* TITLES */
+[data-theme="dark"] .double-card h3 {
+  color: #00c7ac;
+  text-shadow: 0 0 10px rgba(255, 0, 200, 0.3);
+}
+
+[data-theme="dark"] .soon-info h4,
+[data-theme="dark"] .editors-pick h4 {
+  background: linear-gradient(90deg, #ff00cc, #ff00b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* DESCRIPTION */
+[data-theme="dark"] .double-card p,
+[data-theme="dark"] .double-card small {
+  color: #e4e4e4;
+  opacity: 0.95;
+}
+
+/* DOTS */
+[data-theme="dark"] .dot {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+[data-theme="dark"] .dot.active {
+  background: #ff00d4;
+  box-shadow: 0 0 10px rgba(255, 0, 212, 0.75);
+}
+
+/*DARKMODE*/
+[data-theme="dark"] .game-card {
+  background: rgb(20, 0, 10);
+  border: 1px solid rgb(255, 0, 200);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(255, 0, 255, 0.534);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .game-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+  border-color: rgba(255, 0, 200, 0.33);
+}
+
+[data-theme="dark"] .game-card img {
+  filter: brightness(0.9) contrast(1.2);
+  transition: all 0.4s ease;
+}
+
+[data-theme="dark"] .game-card:hover img {
+  filter: brightness(1) contrast(1.2);
+}
+
+[data-theme="dark"] .game-card h2 {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.2);
+}
+
+[data-theme="dark"] .game-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at bottom right,
+    rgb(255, 255, 255),
+    rgba(3, 174, 231, 0.468),
+    transparent 50%
+  );
+  filter: blur(80px);
+  opacity: 0.5;
+  z-index: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-theme="dark"] .game-card:hover::before {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
