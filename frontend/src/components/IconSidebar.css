@@ -1,18 +1,29 @@
 .icon-sidebar {
+  /* starter “i siden” og scroller litt med layout */
   position: absolute;
-  top: 340px;
-  left: 20px;
+  top: 290px; /* ✅ start lengre ned */
+  left: 45px;
+
   display: flex;
   flex-direction: column;
   gap: 18px;
   z-index: 20;
 }
 
+/* når den skal “feste seg” */
+.icon-sidebar.is-stuck {
+  position: fixed;
+  top: 60%;
+  left: 40px;
+  transform: translateY(-52%); /* pent midt */
+}
+
+/* bildene dine - behold */
 .icon-sidebar img {
-  width: 28px;
-  height: 28px;
+  width: 27px;
+  height: 27px;
   filter: brightness(0) invert(1);
-  opacity: 0.8;
+  opacity: 0.6;
   cursor: pointer;
   transition: opacity 0.25s ease,
     transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.35s ease;
@@ -31,7 +42,6 @@
   margin: 4px 0;
 }
 
-/* Mobil – skjul */
 @media (max-width: 900px) {
   .icon-sidebar {
     display: none;
