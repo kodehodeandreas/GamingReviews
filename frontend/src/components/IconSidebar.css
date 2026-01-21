@@ -2,7 +2,7 @@
   /* starter “i siden” og scroller litt med layout */
   position: absolute;
   top: 290px; /* ✅ start lengre ned */
-  left: 45px;
+  left: 40px;
 
   display: flex;
   flex-direction: column;
