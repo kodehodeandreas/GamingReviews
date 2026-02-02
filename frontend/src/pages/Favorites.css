@@ -27,12 +27,12 @@
 [data-theme="light"] .favorites {
   background: radial-gradient(
       circle at top right,
-      rgba(244, 236, 240, 0.463),
+      rgba(203, 80, 141, 0.463),
       transparent 40%
     ),
     radial-gradient(
       circle at bottom left,
-      rgba(240, 237, 238, 0.496),
+      rgba(184, 30, 81, 0.496),
       transparent 50%
     ),
     linear-gradient(to bottom, #ecf0f0 0%, #e6ecef 80%, #ecf4f6 100%);
@@ -62,7 +62,7 @@
 }
 
 .favorites-section {
-  background-color: #ffa3edcc;
+  background-color: #ffa3ed00;
   border-radius: 12px;
   border: solid 2px rgb(255, 0, 153);
   padding: 25px;
@@ -88,12 +88,12 @@
 .favorite-card {
   background: radial-gradient(
     circle at bottom right,
-    rgba(192, 6, 176, 0.753),
-    rgba(0, 125, 125, 0.852),
-    rgba(169, 2, 130, 0.884)
+    rgba(192, 6, 177, 0),
+    rgba(85, 1, 78, 0.852),
+    rgba(169, 2, 130, 0)
   );
   opacity: 0.9;
-  border: solid 2px rgb(249, 248, 244);
+  border: solid 2px rgb(138, 0, 90);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 0 12px rgba(255, 0, 255, 0);
@@ -151,9 +151,9 @@
 .underrated .favorite-card {
   background: radial-gradient(
     circle at bottom right,
-    rgba(255, 0, 230, 0.915),
-    rgba(0, 179, 179, 0.958),
-    rgba(255, 0, 217, 0.995)
+    rgba(255, 0, 230, 0.585),
+    rgba(179, 0, 152, 0.373),
+    rgba(255, 0, 217, 0.56)
   );
   opacity: 0.9;
   border: solid 2px purple;
